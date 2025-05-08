@@ -14,6 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_ReadAndSee/Scenes/LevelSelect.unity
     guid: 45ad0a66dadd1374babfbcaab5177c6b
+  - enabled: 1
+    path: Assets/_ReadAndSee/Scenes/Levels/QuizGame.unity
+    guid: 411a13595f05fe44aace8ac4db69002e
+  - enabled: 1
+    path: Assets/_ReadAndSee/Scenes/Results.unity
+    guid: 5c9fe01299558f645ae71c017a8db525
   m_configObjects:
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: dc13b8688cf8cf34a82f23490c848d48, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
