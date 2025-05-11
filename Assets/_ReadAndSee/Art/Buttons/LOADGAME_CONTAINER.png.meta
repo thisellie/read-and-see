@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 477f43667618c5941838e3aa5798748c
+guid: 4acfc7bf3be64814192057d2202e2d48
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7499823904417805887
-    second: ABOUT_0
+      213: 6853775056010088508
+    second: LOADGAME_CONTAINER_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ABOUT_0
+      name: LOADGAME_CONTAINER_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 19
-        width: 569
-        height: 211
+        x: 9
+        y: 112
+        width: 782
+        height: 576
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f367ec4fa1ab41860800000000000000
-      internalID: 7499823904417805887
+      spriteID: c301aefb9108d1f50800000000000000
+      internalID: 6853775056010088508
       vertices: []
       indices: 
       edges: []
@@ -147,8 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      ABOUT_0: 7499823904417805887
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
