@@ -32,7 +32,7 @@ public class SaveSlot : MonoBehaviour
         if (!currentSlotInfo.isEmpty)
         {
             Debug.Log($"Attempting to load game from file: {currentSlotInfo.fileName}");
-            bool loadSuccess = SaveManager.Instance.LoadGame(currentSlotInfo.fileName);
+            bool loadSuccess = SaveManager.Instance.LoadPlayer(currentSlotInfo.fileName);
             if (loadSuccess)
             {
                 SaveManager.Instance.TransitionToScene(sceneToLoad);

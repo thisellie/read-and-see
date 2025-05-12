@@ -13,6 +13,7 @@ public class SaveManager : MonoBehaviour
     [Header("Save Slot Configuration")]
     private string baseFileName = "save_slot_";
     private string fileExtension = ".json";
+    private string saveFileName = string.Empty;
 
     [Header("UI References (for Saving)")]
     public TMPro.TMP_InputField playerNameInputFieldForSave;
@@ -41,7 +42,7 @@ public class SaveManager : MonoBehaviour
         return baseFileName + playerName + "_" + timestamp;
     }
 
-    public void SaveGame()
+    public void CreatePlayer()
     {
         if (playerNameInputFieldForSave == null || string.IsNullOrWhiteSpace(playerNameInputFieldForSave.text))
         {
@@ -52,17 +53,23 @@ public class SaveManager : MonoBehaviour
         PlayerData data = new PlayerData
         {
             playerName = playerNameInputFieldForSave.text,
-            lastSavedTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+            lastSavedTime = DateTime.Now.ToString("s"), // ISO 8601
+            allProgress = new List<DifficultyProgress>
+            {
+                new(DifficultyLevel.Beginner.ToString()),
+                new(DifficultyLevel.Normal.ToString()),
+                new(DifficultyLevel.Challenging.ToString())
+            }
         };
 
         string uniqueFileName = GenerateUniqueFileName(data.playerName);
-        string filePath = GetFilePath(uniqueFileName);
+        string saveFileName = GetFilePath(uniqueFileName);
 
         try
         {
             string json = JsonUtility.ToJson(data, true);
-            File.WriteAllText(filePath, json);
-            Debug.Log($"Game saved to {filePath}");
+            File.WriteAllText(saveFileName, json);
+            Debug.Log($"Game saved to {saveFileName}");
         }
         catch (Exception e)
         {
@@ -70,20 +77,34 @@ public class SaveManager : MonoBehaviour
         }
     }
 
-    public bool LoadGame(string fileName)
+    public void SavePlayer()
     {
-        string filePath = GetFilePath(fileName);
+        try
+        {
+            string json = JsonUtility.ToJson(CurrentPlayerData, true);
+            File.WriteAllText(saveFileName, json);
+            Debug.Log($"Game saved to {saveFileName}");
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"Failed to save data: {e.Message}");
+        }
+    }
 
-        if (File.Exists(filePath))
+    public bool LoadPlayer(string fileName)
+    {
+        saveFileName = GetFilePath(fileName);
+
+        if (File.Exists(saveFileName))
         {
             try
             {
-                string json = File.ReadAllText(filePath);
+                string json = File.ReadAllText(saveFileName);
                 CurrentPlayerData = JsonUtility.FromJson<PlayerData>(json);
 
                 if (CurrentPlayerData != null)
                 {
-                    Debug.Log($"Game loaded from {filePath}. Player: {CurrentPlayerData.playerName}");
+                    Debug.Log($"Game loaded from {saveFileName}. Player: {CurrentPlayerData.playerName}");
                     return true;
                 }
                 else
@@ -100,23 +121,26 @@ public class SaveManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning($"No save file found at {filePath}");
+            Debug.LogWarning($"No save file found at {saveFileName}");
             return false;
         }
     }
+
+    // TODO: Delete player function
+    //public void DeletePlayer() { }
 
     public List<SaveSlotInfo> GetAllSaveSlotMetadata()
     {
         List<SaveSlotInfo> slotInfos = new List<SaveSlotInfo>();
         string[] files = Directory.GetFiles(Application.persistentDataPath, baseFileName + "*" + fileExtension);
 
-        foreach (string filePath in files)
+        foreach (string saveFileName in files)
         {
             try
             {
-                string json = File.ReadAllText(filePath);
+                string json = File.ReadAllText(saveFileName);
                 PlayerData tempData = JsonUtility.FromJson<PlayerData>(json);
-                string fileName = Path.GetFileNameWithoutExtension(filePath);
+                string fileName = Path.GetFileNameWithoutExtension(saveFileName);
 
                 if (tempData != null)
                 {
@@ -129,7 +153,7 @@ public class SaveManager : MonoBehaviour
             }
             catch (Exception e)
             {
-                Debug.LogError($"Error reading save file {filePath}: {e.Message}");
+                Debug.LogError($"Error reading save file {saveFileName}: {e.Message}");
             }
         }
 
@@ -148,15 +172,5 @@ public class SaveManager : MonoBehaviour
     private bool IsLoadingForNewGame(string sceneName)
     {
         return false;
-    }
-
-    public void StartNewGameData(string playerName)
-    {
-        CurrentPlayerData = new PlayerData
-        {
-            playerName = playerName,
-            lastSavedTime = "Never Saved",
-        };
-        Debug.Log($"Starting new game for player: {playerName}");
     }
 }
