@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class QuizDatabase : MonoBehaviour
@@ -53,6 +54,13 @@ public class QuizDatabase : MonoBehaviour
     private Sprite LoadSpriteFromResources(string path)
     {
         return Resources.Load<Sprite>(path);
+    }
+
+    // Get all levels based on the difficulty from the GameManager.Instance.currentDifficulty
+    public QuizCategory[] GetLevels()
+    {
+        QuizCategory[] levels = categories.Where(level => level.difficulty == GameManager.Instance.currentDifficulty).ToArray();
+        return levels;
     }
 
     public QuizCategory GetCategory(string categoryName)
