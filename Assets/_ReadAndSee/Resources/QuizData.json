@@ -1,84 +1,87 @@
-{  
-"categories": [  
- {  
-   "categoryName": "General Knowledge",  
-   "questions": [  
-     {  
-       "questionText": "Which image shows the capital of France?",  
-       "imageOptionPaths": ["Images/1", "Images/2"],  
-       "correctAnswerIndex": 0,  
-       "explanation": "The first image is Paris, the capital and most populous city of France.",  
-       "pointValue": 10  
-     },  
-     {  
-       "questionText": "Which image shows the Red Planet?",  
-       "imageOptionPaths": ["Images/1", "Images/2"],  
-       "correctAnswerIndex": 1,  
-       "explanation": "The second image is Mars, often referred to as the Red Planet due to its reddish appearance.",  
-       "pointValue": 10  
-     },  
-     {  
-       "questionText": "Which image shows the largest ocean on Earth?",  
-       "imageOptionPaths": ["Images/1", "Images/2"],  
-       "correctAnswerIndex": 1,  
-       "explanation": "The second image is the Pacific Ocean, the largest and deepest ocean on Earth.",  
-       "pointValue": 10  
-     },  
-     {  
-       "questionText": "Which image shows the author of 'Romeo and Juliet'?",  
-       "imageOptionPaths": ["Images/1", "Images/2"],  
-       "correctAnswerIndex": 1,  
-       "explanation": "The second image is William Shakespeare, who wrote 'Romeo and Juliet'.",  
-       "pointValue": 10  
-     },  
-     {  
-       "questionText": "Which image shows the chemical symbol for gold?",  
-       "imageOptionPaths": ["Images/1", "Images/2"],  
-       "correctAnswerIndex": 0,  
-       "explanation": "The first image is Au, the chemical symbol for gold, derived from its Latin name 'aurum'.",  
-       "pointValue": 10  
-     }  
-   ]  
- },  
- {  
-   "categoryName": "Science",  
-   "questions": [  
-     {  
-       "questionText": "Which image shows something that is NOT a state of matter?",  
-       "imageOptionPaths": ["Images/1", "Images/2"],  
-       "correctAnswerIndex": 1,  
-       "explanation": "The second image is Mineral, which is not a state of matter.",  
-       "pointValue": 10  
-     },  
-     {  
-       "questionText": "Which image shows the hardest natural substance on Earth?",  
-       "imageOptionPaths": ["Images/1", "Images/2"],  
-       "correctAnswerIndex": 1,  
-       "explanation": "The second image is Diamond, the hardest known natural material on Earth.",  
-       "pointValue": 10  
-     },  
-     {  
-       "questionText": "Which image shows the planet with the most moons?",  
-       "imageOptionPaths": ["Images/1", "Images/2"],  
-       "correctAnswerIndex": 1,  
-       "explanation": "The second image is Saturn, which has the most confirmed moons with 82 moons.",  
-       "pointValue": 10  
-     },  
-     {  
-       "questionText": "Which image shows the smallest bone in the human body?",  
-       "imageOptionPaths": ["Images/1", "Images/2"],  
-       "correctAnswerIndex": 0,  
-       "explanation": "The first image is the Stapes, the smallest bone in the human body, located in the middle ear.",  
-       "pointValue": 10  
-     },  
-     {  
-       "questionText": "Which image shows something that is NOT a primary color?",  
-       "imageOptionPaths": ["Images/1", "Images/2"],  
-       "correctAnswerIndex": 1,  
-       "explanation": "The second image is Green, which is a secondary color made by mixing blue and yellow.",  
-       "pointValue": 10  
-     }  
-   ]  
- }  
-]  
+{
+  "categories": [
+    {
+      "categoryName": "General Knowledge",
+      "difficulty": "Beginner",
+      "questions": [
+        {
+          "questionText": "Which image shows the capital of France?",
+          "imageOptionPaths": ["Levels/General Knowledge/Image Options/1", "Levels/General Knowledge/Image Options/2"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "questionText": "Which image shows the Red Planet?",
+          "imageOptionPaths": ["Levels/General Knowledge/Image Options/1", "Levels/General Knowledge/Image Options/2"],
+          "correctAnswerIndex": 1
+        },
+        {
+          "questionText": "Which image shows the largest ocean on Earth?",
+          "imageOptionPaths": ["Levels/General Knowledge/Image Options/1", "Levels/General Knowledge/Image Options/2"],
+          "correctAnswerIndex": 1
+        },
+        {
+          "questionText": "Which image shows the author of 'Romeo and Juliet'?",
+          "imageOptionPaths": ["Levels/General Knowledge/Image Options/1", "Levels/General Knowledge/Image Options/2"],
+          "correctAnswerIndex": 1
+        },
+        {
+          "questionText": "Which image shows the chemical symbol for gold?",
+          "imageOptionPaths": ["Levels/General Knowledge/Image Options/1", "Levels/General Knowledge/Image Options/2"],
+          "correctAnswerIndex": 0
+        }
+      ]
+    },
+    {
+      "categoryName": "Science",
+      "difficulty": "Normal",
+      "questions": [
+        {
+          "questionText": "Which image shows something that is NOT a state of matter?",
+          "imageOptionPaths": ["Levels/General Knowledge/Image Options/1", "Levels/General Knowledge/Image Options/2"],
+          "correctAnswerIndex": 1
+        },
+        {
+          "questionText": "Which image shows the hardest natural substance on Earth?",
+          "imageOptionPaths": ["Levels/General Knowledge/Image Options/1", "Levels/General Knowledge/Image Options/2"],
+          "correctAnswerIndex": 1
+        },
+        {
+          "questionText": "Which image shows the planet with the most moons?",
+          "imageOptionPaths": ["Levels/General Knowledge/Image Options/1", "Levels/General Knowledge/Image Options/2"],
+          "correctAnswerIndex": 1
+        },
+        {
+          "questionText": "Which image shows the smallest bone in the human body?",
+          "imageOptionPaths": ["Levels/General Knowledge/Image Options/1", "Levels/General Knowledge/Image Options/2"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "questionText": "Which image shows something that is NOT a primary color?",
+          "imageOptionPaths": ["Levels/General Knowledge/Image Options/1", "Levels/General Knowledge/Image Options/2"],
+          "correctAnswerIndex": 1
+        }
+      ]
+    },
+    {
+      "categoryName": "History",
+      "difficulty": "Challenging",
+      "questions": [
+        {
+          "questionText": "Which image shows the first president of the United States?",
+          "imageOptionPaths": ["Levels/General Knowledge/Image Options/1", "Levels/General Knowledge/Image Options/2"],
+          "correctAnswerIndex": 0
+        },
+        {
+          "questionText": "Which image shows the ancient wonder of the world?",
+          "imageOptionPaths": ["Levels/General Knowledge/Image Options/1", "Levels/General Knowledge/Image Options/2"],
+          "correctAnswerIndex": 1
+        },
+        {
+          "questionText": "Which image shows the first, and only, man to walk on the moon?",
+          "imageOptionPaths": ["Levels/General Knowledge/Image Options/1", "Levels/General Knowledge/Image Options/2"],
+          "correctAnswerIndex": 0
+        }
+      ]
+    }
+  ]
 }

@@ -75,7 +75,6 @@ public class GameManager : MonoBehaviour
 
             if (isCorrect)
             {
-                currentScore += currentQuestion.pointValue;
                 correctAnswers++;
                 AudioManager.Instance.PlayCorrectSound();
             }
