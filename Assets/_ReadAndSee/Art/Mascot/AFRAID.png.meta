@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: df3f49010dad53f4aa52b69bef7414c2
+guid: c438fcc0a788a8346b84db61d2510dfa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4457083768613883778
-    second: CONFIRM_EXIT_0
+      213: 744569955070029502
+    second: AFRAID_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CONFIRM_EXIT_0
+      name: AFRAID_0
       rect:
         serializedVersion: 2
-        x: 20
-        y: 119
-        width: 760
-        height: 562
+        x: 0
+        y: 0
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 28fc36aa21ebadd30800000000000000
-      internalID: 4457083768613883778
+      spriteID: ebea062ed6e355a00800000000000000
+      internalID: 744569955070029502
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      CONFIRM_EXIT_0: 4457083768613883778
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
