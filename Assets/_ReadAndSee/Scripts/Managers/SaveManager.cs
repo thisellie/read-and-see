@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class SaveManager : MonoBehaviour
 {
@@ -158,6 +159,40 @@ public class SaveManager : MonoBehaviour
         }
 
         return slotInfos;
+    }
+
+    public List<StarSummary> GetAllSaveSlotStarsMetadata()
+    {
+        List<StarSummary> starSummaries = new();
+        string[] files = Directory.GetFiles(Application.persistentDataPath, baseFileName + "*" + fileExtension);
+
+        foreach (string saveFileName in files)
+        {
+            try
+            {
+                string json = File.ReadAllText(saveFileName);
+
+                PlayerData playerData = JsonUtility.FromJson<PlayerData>(json);
+
+                int totalStars = 0;
+                Dictionary<string, int> starsByDifficulty = new();
+
+                foreach (var difficulty in playerData.allProgress)
+                {
+                    int stars = difficulty.levels.Sum(level => level.starsEarned);
+                    starsByDifficulty[difficulty.difficultyName] = stars;
+                    totalStars += stars;
+                }
+
+                starSummaries.Add(new StarSummary(playerData.playerName, totalStars, starsByDifficulty));
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Error reading save file {saveFileName}: {e.Message}");
+            }
+        }
+
+        return starSummaries;
     }
 
     public void TransitionToScene(string sceneName)

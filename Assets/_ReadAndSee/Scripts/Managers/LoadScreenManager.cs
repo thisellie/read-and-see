@@ -7,6 +7,8 @@ public class LoadScreenManager : MonoBehaviour
     [Header("UI Setup")]
     public GameObject saveSlotUIPrefab;
     public Transform slotsParentContainer;
+    public GameObject scoreboardUIPrefab;
+    public Transform scoreboardContainer;
     public string gameSceneName = "GameScene";
 
     void Start()
@@ -16,7 +18,9 @@ public class LoadScreenManager : MonoBehaviour
             Debug.LogError("LoadScreenManager UI Prefab or Parent Container not set in Inspector!");
             return;
         }
+
         PopulateLoadScreen();
+        PopulateScoreboard();
     }
 
     [ContextMenu("PopulateLoadScreen")]
@@ -45,15 +49,44 @@ public class LoadScreenManager : MonoBehaviour
         foreach (SaveSlotInfo slotInfo in allSlotsMetadata)
         {
             GameObject slotUIInstance = Instantiate(saveSlotUIPrefab, slotsParentContainer);
-            SaveSlot slotComponent = slotUIInstance.GetComponent<SaveSlot>();
-
-            if (slotComponent != null)
+            
+            if (slotUIInstance.TryGetComponent<SaveSlot>(out var slotComponent))
             {
                 slotComponent.Setup(slotInfo, gameSceneName);
             }
             else
             {
                 Debug.LogError($"SaveSlotUIPrefab is missing the SaveSlot script component.");
+            }
+        }
+    }
+
+    public void PopulateScoreboard()
+    {
+        foreach (Transform child in scoreboardContainer)
+        {
+            Destroy(child.gameObject);
+        }
+
+        List<StarSummary> allStarsMetadata = SaveManager.Instance.GetAllSaveSlotStarsMetadata();
+
+        if (allStarsMetadata.Count == 0)
+        {
+            Debug.Log("No save files found.");
+            return;
+        }
+
+        foreach (StarSummary summary in allStarsMetadata)
+        {
+            GameObject scoreboardUIInstance = Instantiate(scoreboardUIPrefab, scoreboardContainer);
+            
+            if (scoreboardUIInstance.TryGetComponent<ScoreboardSlot>(out var scoreboardComponent))
+            {
+                scoreboardComponent.Setup(summary);
+            }
+            else
+            {
+                Debug.LogError($"ScoreboardUIPrefab is missing the ScoreboardSlot script component.");
             }
         }
     }
