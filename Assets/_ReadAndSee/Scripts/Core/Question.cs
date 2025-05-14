@@ -7,13 +7,12 @@ public class Question
     public string[] imageOptionPaths;
     public Sprite[] imageOptions;
     public int correctAnswerIndex;
-    public string explanation;
-    public int pointValue = 10;
 }
 
 [System.Serializable]
 public class QuizCategory
 {
     public string categoryName;
+    public string difficulty;
     public Question[] questions;
 }
