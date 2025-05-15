@@ -455,7 +455,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 860cc2024a9e61244aa010782cca6d1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  quizDataJson: {fileID: 4900000, guid: cfa72abe9d7d60c43b73d51ecc5423b7, type: 3}
+  levels:
+  - {fileID: 11400000, guid: c88343ba03bd8e84fac718f4f5e8adfb, type: 2}
 --- !u!4 &599334432
 Transform:
   m_ObjectHideFlags: 0
@@ -794,11 +795,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficultyText: {fileID: 1764833032}
-  levelsParentContainer: {fileID: 2143279475}
   levelButtonPrefab: {fileID: 5316967809292879352, guid: ae08c6fca5cc9dc4d96db500d3540b35, type: 3}
-  starsContainer: {fileID: 0}
-  withStarPrefab: {fileID: 4397325432638189224, guid: c272f2284b8b6744fac7ce73097d51b6, type: 3}
-  noStarPrefab: {fileID: 4476039639766907333, guid: 804ba3b5c6917c24eaf22c352e5643cd, type: 3}
+  levelsParentContainer: {fileID: 2143279475}
 --- !u!4 &1332262100
 Transform:
   m_ObjectHideFlags: 0

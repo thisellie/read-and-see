@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -11,15 +10,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI questionText;
     [SerializeField] private ImageOptionButton[] imageOptionButtons;
     [SerializeField] private TextMeshProUGUI questionCounter;
-    [SerializeField] private Slider progressBar;
-    [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI titleText;
 
     [Header("Results UI References")]
-    [SerializeField] private TextMeshProUGUI finalScoreText;
-    [SerializeField] private TextMeshProUGUI CorrectAnswersText;
-    [SerializeField] private TextMeshProUGUI TotalQuestionsText;
-    [SerializeField] private TextMeshProUGUI percentageText;
+    [SerializeField] private TextMeshProUGUI playerName;
+    [SerializeField] private TextMeshProUGUI incorrectAtmpTxt;
+    [SerializeField] Transform starsContainer;
+    [SerializeField] GameObject withStarPrefab;
+    [SerializeField] GameObject noStarPrefab;
 
     private void Awake()
     {
@@ -30,7 +29,6 @@ public class UIManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "QuizGame")
         {
-            levelText.text = GameManager.Instance.CurrentLevel.ToString();
             UpdateQuizCard();
         }
         else if (SceneManager.GetActiveScene().name == "Results")
@@ -66,21 +64,28 @@ public class UIManager : MonoBehaviour
             int currentIndex = GameManager.Instance.CurrentQuestionIndex + 1;
             int total = GameManager.Instance.TotalQuestions;
             questionCounter.text = $"Question {currentIndex}/{total}";
-            progressBar.value = GameManager.Instance.GetProgress();
 
             // Update score
+            titleText.text = GameManager.Instance.CurrentLevel;
             scoreText.text = $"Score: {GameManager.Instance.CurrentScore}";
         }
     }
 
     private void ShowResults()
     {
-        finalScoreText.text = $"Final Score: {GameManager.Instance.CurrentScore}";
-        CorrectAnswersText.text = $"Correct Answers: {GameManager.Instance.CorrectAnswers}";
-        TotalQuestionsText.text = $"Total Questions: {GameManager.Instance.TotalQuestions}";
+        playerName.text = $"Player: {SaveManager.Instance.CurrentPlayerData.playerName}";
+        incorrectAtmpTxt.text = $"Incorrect attempts: {GameManager.Instance.TotalQuestions - GameManager.Instance.CorrectAnswers}";
+        int stars = SaveManager.Instance.CurrentPlayerData.GetStarsForCategory(GameManager.Instance.CurrentLevel);
+        DisplayStars(stars);
+    }
 
-        float percentage = (float)GameManager.Instance.CorrectAnswers / GameManager.Instance.TotalQuestions * 100f;
-        percentageText.text = $"Accuracy: {percentage:F1}%";
+    public void DisplayStars(int starCount)
+    {
+        foreach (Transform child in starsContainer) Destroy(child.gameObject);
+
+        const int totalStars = 3;
+        for (int i = 0; i < starCount && i < totalStars; i++) Instantiate(withStarPrefab, starsContainer);
+        for (int i = starCount; i < totalStars; i++) Instantiate(noStarPrefab, starsContainer);
     }
 
     public void OnMainMenuButtonClicked()

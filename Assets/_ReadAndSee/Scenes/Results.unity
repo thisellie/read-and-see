@@ -233,9 +233,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: 0}
+  m_AnchoredPosition: {x: 200, y: 25}
   m_SizeDelta: {x: 200, y: 50}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &259558971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,7 +371,7 @@ RectTransform:
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 75}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 1}
 --- !u!1 &438116926
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,9 +409,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 350, y: 0}
+  m_AnchoredPosition: {x: 500, y: 50}
   m_SizeDelta: {x: 0, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &438116928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,7 +429,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 3
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
@@ -1042,7 +1042,7 @@ RectTransform:
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &861220977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2093,13 +2093,13 @@ MonoBehaviour:
   questionText: {fileID: 0}
   imageOptionButtons: []
   questionCounter: {fileID: 0}
-  progressBar: {fileID: 0}
-  categoryText: {fileID: 0}
   scoreText: {fileID: 0}
-  finalScoreText: {fileID: 1777120790}
-  correctAnswersText: {fileID: 578528628}
-  totalQuestionsText: {fileID: 835954154}
-  percentageText: {fileID: 1479681299}
+  titleText: {fileID: 0}
+  playerName: {fileID: 1332841647}
+  incorrectAtmpTxt: {fileID: 1007568322}
+  starsContainer: {fileID: 438116927}
+  withStarPrefab: {fileID: 4397325432638189224, guid: c272f2284b8b6744fac7ce73097d51b6, type: 3}
+  noStarPrefab: {fileID: 4476039639766907333, guid: 804ba3b5c6917c24eaf22c352e5643cd, type: 3}
 --- !u!4 &1653015803
 Transform:
   m_ObjectHideFlags: 0
@@ -2151,7 +2151,7 @@ RectTransform:
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &1731843396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2362,7 +2362,7 @@ RectTransform:
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &1909233549
 MonoBehaviour:
   m_ObjectHideFlags: 0
