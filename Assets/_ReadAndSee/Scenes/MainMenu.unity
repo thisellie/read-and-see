@@ -1743,6 +1743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79b9f95e47b1f484bbb94479950b1e8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNameField: {fileID: 492175903}
 --- !u!1 &364670990
 GameObject:
   m_ObjectHideFlags: 0
@@ -1951,50 +1952,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 379148149}
   m_CullTransparentMesh: 1
---- !u!1 &386464662
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 386464664}
-  - component: {fileID: 386464663}
-  m_Layer: 0
-  m_Name: TransitionManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &386464663
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 386464662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ab74fc0799a47c4e8a922beff68eb3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &386464664
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 386464662}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 517.9265, y: 249.44183, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &415658639
 GameObject:
   m_ObjectHideFlags: 0
@@ -2173,7 +2130,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 4.533325}
+  m_AnchoredPosition: {x: 0, y: 4.533203}
   m_SizeDelta: {x: 0, y: -9.0665}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &458360858
@@ -3382,7 +3339,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66b6cfdc89f92a74dbed10b0f885f0fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNameInputFieldForSave: {fileID: 492175903}
 --- !u!1 &846264850
 GameObject:
   m_ObjectHideFlags: 0
@@ -9027,7 +8983,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 619394802}
-  - {fileID: 386464664}
   - {fileID: 1673370656}
   - {fileID: 994331173}
   - {fileID: 804321311}

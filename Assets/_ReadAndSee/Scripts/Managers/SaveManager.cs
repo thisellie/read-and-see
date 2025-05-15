@@ -10,14 +10,12 @@ public class SaveManager : MonoBehaviour
     public static SaveManager Instance { get; private set; }
 
     public PlayerData CurrentPlayerData { get; private set; }
+    public Action OnPlayerCreated;
 
     [Header("Save Slot Configuration")]
     private string baseFileName = "save_slot_";
     private string fileExtension = ".json";
     private string saveFileName = string.Empty;
-
-    [Header("UI References (for Saving)")]
-    public TMPro.TMP_InputField playerNameInputFieldForSave;
 
     void Awake()
     {
@@ -43,17 +41,11 @@ public class SaveManager : MonoBehaviour
         return baseFileName + playerName + "_" + timestamp;
     }
 
-    public void CreatePlayer()
+    public void CreatePlayer(string name)
     {
-        if (playerNameInputFieldForSave == null || string.IsNullOrWhiteSpace(playerNameInputFieldForSave.text))
+        PlayerData data = new()
         {
-            Debug.LogError("Player name input field is not set or player name is empty. Cannot save.");
-            return;
-        }
-
-        PlayerData data = new PlayerData
-        {
-            playerName = playerNameInputFieldForSave.text,
+            playerName = name,
             lastSavedTime = DateTime.Now.ToString("s"), // ISO 8601
             allProgress = new List<DifficultyProgress>
             {
@@ -76,6 +68,9 @@ public class SaveManager : MonoBehaviour
         {
             Debug.LogError($"Failed to save data: {e.Message}");
         }
+
+        LoadPlayer(uniqueFileName);
+        OnPlayerCreated?.Invoke();
     }
 
     public void SavePlayer()
