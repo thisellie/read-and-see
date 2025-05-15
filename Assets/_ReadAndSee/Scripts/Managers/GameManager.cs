@@ -7,12 +7,12 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     // Game state
-    public string currentDifficulty { get; set; }
-    public int currentScore { get; private set; }
-    public int currentQuestionIndex { get; private set; }
-    public int correctAnswers { get; private set; }
-    public int totalQuestions { get; private set; }
-    public string currentCategory { get; private set; }
+    public DifficultyLevel CurrentDifficulty { get; set; }
+    public int CurrentScore { get; private set; }
+    public int CurrentQuestionIndex { get; private set; }
+    public int CorrectAnswers { get; private set; }
+    public int TotalQuestions { get; private set; }
+    public string CurrentCategory { get; private set; }
 
     private Question[] currentQuestions;
     private float startTime;
@@ -32,35 +32,35 @@ public class GameManager : MonoBehaviour
 
     public void StartGame(string categoryName)
     {
-        currentCategory = categoryName;
+        CurrentCategory = categoryName;
         ResetGameState();
         LoadQuizScene();
     }
 
     private void ResetGameState()
     {
-        currentScore = 0;
-        currentQuestionIndex = 0;
-        correctAnswers = 0;
+        CurrentScore = 0;
+        CurrentQuestionIndex = 0;
+        CorrectAnswers = 0;
         startTime = Time.time;
 
-        QuizCategory category = QuizDatabase.Instance.GetCategory(currentCategory);
+        QuizCategory category = QuizDatabase.Instance.GetCategory(CurrentCategory);
         if (category != null)
         {
             currentQuestions = category.questions;
-            totalQuestions = currentQuestions.Length;
+            TotalQuestions = currentQuestions.Length;
         }
         else
         {
-            Debug.LogError("Category not found: " + currentCategory);
+            Debug.LogError("Category not found: " + CurrentCategory);
         }
     }
 
     public Question GetCurrentQuestion()
     {
-        if (currentQuestionIndex < currentQuestions.Length)
+        if (CurrentQuestionIndex < currentQuestions.Length)
         {
-            return currentQuestions[currentQuestionIndex];
+            return currentQuestions[CurrentQuestionIndex];
         }
         return null;
     }
@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
 
             if (isCorrect)
             {
-                correctAnswers++;
+                CorrectAnswers++;
                 AudioManager.Instance.PlayCorrectSound();
             }
             else
@@ -83,9 +83,9 @@ public class GameManager : MonoBehaviour
                 AudioManager.Instance.PlayWrongSound();
             }
 
-            currentQuestionIndex++;
+            CurrentQuestionIndex++;
 
-            if (currentQuestionIndex >= currentQuestions.Length)
+            if (CurrentQuestionIndex >= currentQuestions.Length)
             {
                 EndGame();
             }
@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
         float totalTime = Time.time - startTime;
         int starsEarned = 1; // 1 star for completion
 
-        if (correctAnswers == totalQuestions)
+        if (CorrectAnswers == TotalQuestions)
             starsEarned++; // Perfect score
 
         if (totalTime < 180f)
@@ -123,11 +123,11 @@ public class GameManager : MonoBehaviour
 
         // Store the result in PlayerData
         DifficultyProgress progress = SaveManager.Instance.CurrentPlayerData.allProgress
-            .Find(d => d.difficultyName == currentDifficulty);
+            .Find(d => d.difficultyName == CurrentDifficulty);
 
         if (progress != null)
         {
-            LevelProgress existingLevel = progress.levels.Find(l => l.quizCategory == currentCategory);
+            LevelProgress existingLevel = progress.levels.Find(l => l.quizCategory == CurrentCategory);
 
             if (existingLevel != null)
             {
@@ -139,7 +139,7 @@ public class GameManager : MonoBehaviour
             else
             {
                 progress.levels.Add(new LevelProgress(
-                   currentCategory,
+                   CurrentCategory,
                    starsEarned,
                    DateTime.Now
                 ));
@@ -159,6 +159,6 @@ public class GameManager : MonoBehaviour
 
     public float GetProgress()
     {
-        return (float)currentQuestionIndex / totalQuestions;
+        return (float)CurrentQuestionIndex / TotalQuestions;
     }
 }

@@ -4,7 +4,7 @@ using TMPro;
 public class ResultPanel : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI finalScoreText;
-    [SerializeField] private TextMeshProUGUI correctAnswersText;
+    [SerializeField] private TextMeshProUGUI CorrectAnswersText;
     [SerializeField] private TextMeshProUGUI finalMessageText;
 
     [SerializeField] private string excellentResultMessage = "Excellent! You're a quiz master!";
@@ -23,11 +23,11 @@ public class ResultPanel : MonoBehaviour
 
         if (gameManager != null)
         {
-            finalScoreText.text = $"Final Score: {gameManager.currentScore}";
-            correctAnswersText.text = $"Correct Answers: {gameManager.correctAnswers}/{gameManager.totalQuestions}";
+            finalScoreText.text = $"Final Score: {gameManager.CurrentScore}";
+            CorrectAnswersText.text = $"Correct Answers: {gameManager.CorrectAnswers}/{gameManager.TotalQuestions}";
 
             // Calculate percentage correct
-            float percentage = (float)gameManager.correctAnswers / gameManager.totalQuestions;
+            float percentage = (float)gameManager.CorrectAnswers / gameManager.TotalQuestions;
 
             // Set appropriate message based on performance
             if (percentage >= 0.9f)

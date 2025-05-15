@@ -10,7 +10,7 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        difficultyText.text = GameManager.Instance.currentDifficulty;
+        difficultyText.text = GameManager.Instance.CurrentDifficulty.ToString();
         PopulateLevelScreen();
     }
 

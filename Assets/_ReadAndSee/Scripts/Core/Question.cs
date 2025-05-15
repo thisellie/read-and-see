@@ -1,18 +1,21 @@
 using UnityEngine;
 
-[System.Serializable]
-public class Question
+[CreateAssetMenu(fileName = "NewQuizCategory", menuName = "Quiz/Quiz Category", order = 1)]
+public class QuizCategory : ScriptableObject 
 {
-    public string questionText;
-    public string[] imageOptionPaths;
-    public Sprite[] imageOptions;
-    public int correctAnswerIndex;
+    public string categoryName;
+    public DifficultyLevel difficulty; 
+    public Question[] questions;
 }
 
 [System.Serializable]
-public class QuizCategory
+public class Question
 {
-    public string categoryName;
-    public string difficulty;
-    public Question[] questions;
+    [TextArea(3, 5)] 
+    public string questionText;
+
+    public Sprite[] imageOptions;
+     public string[] imageOptionPaths;
+
+    public int correctAnswerIndex;
 }

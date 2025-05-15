@@ -6,7 +6,7 @@ public class DifficultyButton : MonoBehaviour
     public DifficultyLevel selectedDifficulty;
     public void ApplyDifficulty()
     {
-        GameManager.Instance.currentDifficulty = selectedDifficulty.ToString();
+        GameManager.Instance.CurrentDifficulty = selectedDifficulty;
         Debug.Log($"Difficulty selected: {selectedDifficulty}");
 
         // TODO: Load levels based on the selected difficulty and it corresponding level data

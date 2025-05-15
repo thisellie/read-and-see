@@ -17,8 +17,8 @@ public class UIManager : MonoBehaviour
 
     [Header("Results UI References")]
     [SerializeField] private TextMeshProUGUI finalScoreText;
-    [SerializeField] private TextMeshProUGUI correctAnswersText;
-    [SerializeField] private TextMeshProUGUI totalQuestionsText;
+    [SerializeField] private TextMeshProUGUI CorrectAnswersText;
+    [SerializeField] private TextMeshProUGUI TotalQuestionsText;
     [SerializeField] private TextMeshProUGUI percentageText;
 
     private void Awake()
@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "QuizGame")
         {
-            categoryText.text = GameManager.Instance.currentCategory;
+            categoryText.text = GameManager.Instance.CurrentCategory.ToString();
             UpdateQuizCard();
         }
         else if (SceneManager.GetActiveScene().name == "Results")
@@ -63,23 +63,23 @@ public class UIManager : MonoBehaviour
             }
 
             // Update progress
-            int currentIndex = GameManager.Instance.currentQuestionIndex + 1;
-            int total = GameManager.Instance.totalQuestions;
+            int currentIndex = GameManager.Instance.CurrentQuestionIndex + 1;
+            int total = GameManager.Instance.TotalQuestions;
             questionCounter.text = $"Question {currentIndex}/{total}";
             progressBar.value = GameManager.Instance.GetProgress();
 
             // Update score
-            scoreText.text = $"Score: {GameManager.Instance.currentScore}";
+            scoreText.text = $"Score: {GameManager.Instance.CurrentScore}";
         }
     }
 
     private void ShowResults()
     {
-        finalScoreText.text = $"Final Score: {GameManager.Instance.currentScore}";
-        correctAnswersText.text = $"Correct Answers: {GameManager.Instance.correctAnswers}";
-        totalQuestionsText.text = $"Total Questions: {GameManager.Instance.totalQuestions}";
+        finalScoreText.text = $"Final Score: {GameManager.Instance.CurrentScore}";
+        CorrectAnswersText.text = $"Correct Answers: {GameManager.Instance.CorrectAnswers}";
+        TotalQuestionsText.text = $"Total Questions: {GameManager.Instance.TotalQuestions}";
 
-        float percentage = (float)GameManager.Instance.correctAnswers / GameManager.Instance.totalQuestions * 100f;
+        float percentage = (float)GameManager.Instance.CorrectAnswers / GameManager.Instance.TotalQuestions * 100f;
         percentageText.text = $"Accuracy: {percentage:F1}%";
     }
 
@@ -90,6 +90,6 @@ public class UIManager : MonoBehaviour
 
     public void OnPlayAgainButtonClicked()
     {
-        GameManager.Instance.StartGame(GameManager.Instance.currentCategory);
+        GameManager.Instance.StartGame(GameManager.Instance.CurrentCategory);
     }
 }

@@ -49,9 +49,9 @@ public class SaveManager : MonoBehaviour
             lastSavedTime = DateTime.Now.ToString("s"), // ISO 8601
             allProgress = new List<DifficultyProgress>
             {
-                new(DifficultyLevel.Beginner.ToString()),
-                new(DifficultyLevel.Normal.ToString()),
-                new(DifficultyLevel.Challenging.ToString())
+                new(DifficultyLevel.Beginner),
+                new(DifficultyLevel.Normal),
+                new(DifficultyLevel.Challenging)
             }
         };
 
@@ -175,7 +175,7 @@ public class SaveManager : MonoBehaviour
                 foreach (var difficulty in playerData.allProgress)
                 {
                     int stars = difficulty.levels.Sum(level => level.starsEarned);
-                    starsByDifficulty[difficulty.difficultyName] = stars;
+                    starsByDifficulty[difficulty.difficultyName.ToString()] = stars;
                     totalStars += stars;
                 }
 

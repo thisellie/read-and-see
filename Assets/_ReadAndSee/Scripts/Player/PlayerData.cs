@@ -12,14 +12,14 @@ public class PlayerData
 
     public PlayerData()
     {
-        allProgress.Add(new DifficultyProgress(DifficultyLevel.Beginner.ToString()));
-        allProgress.Add(new DifficultyProgress(DifficultyLevel.Normal.ToString()));
-        allProgress.Add(new DifficultyProgress(DifficultyLevel.Challenging.ToString()));
+        allProgress.Add(new DifficultyProgress(DifficultyLevel.Beginner));
+        allProgress.Add(new DifficultyProgress(DifficultyLevel.Normal));
+        allProgress.Add(new DifficultyProgress(DifficultyLevel.Challenging));
     }
 
-    public DifficultyProgress GetProgress(string difficultyName)
+    public DifficultyProgress GetProgress(DifficultyLevel difficultyName)
     {
-        return allProgress.Find(p => p.difficultyName.Equals(difficultyName, StringComparison.OrdinalIgnoreCase));
+        return allProgress.Find(p => p.difficultyName.Equals(difficultyName));
     }
 
     public int GetStarsForCategory(string category)
@@ -45,10 +45,10 @@ public enum DifficultyLevel
 [System.Serializable]
 public class DifficultyProgress
 {
-    public string difficultyName;
+    public DifficultyLevel difficultyName;
     public List<LevelProgress> levels = new();
 
-    public DifficultyProgress(string name)
+    public DifficultyProgress(DifficultyLevel name)
     {
         difficultyName = name;
     }

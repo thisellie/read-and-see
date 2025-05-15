@@ -59,7 +59,7 @@ public class QuizDatabase : MonoBehaviour
     // Get all levels based on the difficulty from the GameManager.Instance.currentDifficulty
     public QuizCategory[] GetLevels()
     {
-        QuizCategory[] levels = categories.Where(level => level.difficulty == GameManager.Instance.currentDifficulty).ToArray();
+        QuizCategory[] levels = categories.Where(level => level.difficulty == GameManager.Instance.CurrentDifficulty).ToArray();
         return levels;
     }
 
