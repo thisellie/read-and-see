@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: John's Kite
+  m_EditorClassIdentifier: Assembly-CSharp::QuizLevel
+  levelName: John's Kite
+  difficulty: 0
+  thumbnail: {fileID: 2322351003123331580, guid: 6a55d7b29cee5ed49879efefbb7434ae, type: 3}
+  titleClip: {fileID: 8300000, guid: 8319ef31bb84dec429536ce25a1c0db5, type: 3}
+  questions:
+  - questionText: John's kite flew
+    correctClip: {fileID: 8300000, guid: 7fde6f6084577d24db700dccc924e0d1, type: 3}
+    wrongClip: {fileID: 8300000, guid: 9ce8f7c8e9b5ab14297a79d20b11422a, type: 3}
+    imageOptions:
+    - {fileID: 2322351003123331580, guid: 6a55d7b29cee5ed49879efefbb7434ae, type: 3}
+    - {fileID: -1055069497252187714, guid: 8beed5e87a4de344ca6163b2941ba3b5, type: 3}
+    correctAnswerIndex: 0
+  - questionText: He ran after it in the backyard but he could not catch it.
+    correctClip: {fileID: 8300000, guid: 676a0f5b997ac9a46b0284406cf8b4a8, type: 3}
+    wrongClip: {fileID: 8300000, guid: 676a0f5b997ac9a46b0284406cf8b4a8, type: 3}
+    imageOptions:
+    - {fileID: -3848560328238774895, guid: 07a2e4ced56d33447aedf643d32ad754, type: 3}
+    - {fileID: -2056046850784790795, guid: a9ca728157cc3234084b4b61e5c0603c, type: 3}
+    correctAnswerIndex: 0
+  - questionText: 'A charm dog picked up the string and returned it to him. '
+    correctClip: {fileID: 8300000, guid: 250d33a794736364ea665270ef438e4f, type: 3}
+    wrongClip: {fileID: 8300000, guid: ae6f24004d6bece428c2df587e15a01a, type: 3}
+    imageOptions:
+    - {fileID: -7866678605945730405, guid: 38abd3f132a2329498ce0bad3be3c19f, type: 3}
+    - {fileID: -1716114899119322924, guid: 1af351a1793682e48a96fc45b5578fde, type: 3}
+    correctAnswerIndex: 0
+  - questionText: 'John laughed and hugged the dog. '
+    correctClip: {fileID: 8300000, guid: 5ff6868f2bd73fb4f85c001b2728f8b6, type: 3}
+    wrongClip: {fileID: 8300000, guid: 4efd02d5642273f4a969b7aa1433ba79, type: 3}
+    imageOptions:
+    - {fileID: -1055069497252187714, guid: 8beed5e87a4de344ca6163b2941ba3b5, type: 3}
+    - {fileID: -3848560328238774895, guid: 07a2e4ced56d33447aedf643d32ad754, type: 3}
+    correctAnswerIndex: 0
+  - questionText: 'He named it buddy. '
+    correctClip: {fileID: 8300000, guid: 7a5dff8bc421fdd4c8c314aabc6422e0, type: 3}
+    wrongClip: {fileID: 8300000, guid: b9dafca5e1287144c99bc8506a02052e, type: 3}
+    imageOptions:
+    - {fileID: -2056046850784790795, guid: a9ca728157cc3234084b4b61e5c0603c, type: 3}
+    - {fileID: 2322351003123331580, guid: 6a55d7b29cee5ed49879efefbb7434ae, type: 3}
+    correctAnswerIndex: 0
+  - questionText: From that day on, John found a new kind friend.
+    correctClip: {fileID: 8300000, guid: ae714a4445d3a644b97fcd592ac71265, type: 3}
+    wrongClip: {fileID: 8300000, guid: 304ec2532d96bf640b0eae8e34343540, type: 3}
+    imageOptions:
+    - {fileID: -7866678605945730405, guid: 38abd3f132a2329498ce0bad3be3c19f, type: 3}
+    - {fileID: -1716114899119322924, guid: 1af351a1793682e48a96fc45b5578fde, type: 3}
+    correctAnswerIndex: 1
