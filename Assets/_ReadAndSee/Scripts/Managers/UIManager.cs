@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
 
     [Header("Quiz UI References")]
     [SerializeField] VideoPlayer backgroundVideo;
+    [SerializeField] VideoPlayer quizVideo;
     [SerializeField] AudioSource audioSource;
     [SerializeField] TextMeshProUGUI questionText;
     [SerializeField] ImageOptionButton[] imageOptionButtons;
@@ -92,6 +93,25 @@ public class UIManager : MonoBehaviour
             titleText.text = GameManager.Instance.CurrentLevel;
             scoreText.text = $"Score: {GameManager.Instance.CorrectAnswers}";
         }
+    }
+
+    public IEnumerator PlayVideo(VideoClip video)
+    {
+        quizPanel.gameObject.SetActive(false);
+        quizVideo.gameObject.SetActive(true);
+        quizVideo.clip = video;
+
+        if (video != null)
+        {
+            quizVideo.Play();
+            yield return new WaitForSeconds((float)video.length + 1f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(1f);
+        }
+
+        GameManager.Instance.EndGame();
     }
 
     public void ShowQuizPanel()

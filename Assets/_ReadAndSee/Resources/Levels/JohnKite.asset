@@ -15,6 +15,7 @@ MonoBehaviour:
   levelName: John's Kite
   difficulty: 0
   thumbnail: {fileID: -3848560328238774895, guid: 07a2e4ced56d33447aedf643d32ad754, type: 3}
+  videoClip: {fileID: 32900000, guid: d100622119651d74d9f105beaab10b60, type: 3}
   titleClip: {fileID: 8300000, guid: 8319ef31bb84dec429536ce25a1c0db5, type: 3}
   questions:
   - questionText: 'John''s kite flew. '

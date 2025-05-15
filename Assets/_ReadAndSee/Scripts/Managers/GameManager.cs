@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 using System.Collections;
+using UnityEngine.Video;
 
 public class GameManager : MonoBehaviour
 {
@@ -102,7 +103,7 @@ public class GameManager : MonoBehaviour
         CurrentQuestionIndex++;
 
         // TODO: Play video before EndGame()
-        if (CurrentQuestionIndex >= currentQuestions.Length) EndGame();
+        if (CurrentQuestionIndex >= currentQuestions.Length) StartCoroutine(UIManager.Instance.PlayVideo(Level.videoClip));
         else UpdateQuizUI();
     }
 
@@ -111,7 +112,8 @@ public class GameManager : MonoBehaviour
         if (UIManager.Instance != null) UIManager.Instance.UpdateQuizCard();
     }
 
-    private void EndGame()
+
+    public void EndGame()
     {
         float totalTime = Time.time - startTime;
         int starsEarned = 1; // 1 star for completion
