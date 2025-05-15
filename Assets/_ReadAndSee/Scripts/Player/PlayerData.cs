@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 [System.Serializable]
 public class PlayerData
@@ -19,6 +20,17 @@ public class PlayerData
     public DifficultyProgress GetProgress(string difficultyName)
     {
         return allProgress.Find(p => p.difficultyName.Equals(difficultyName, StringComparison.OrdinalIgnoreCase));
+    }
+
+    public int GetStarsForCategory(string category)
+    {
+        foreach (var progress in allProgress)
+        {
+            var level = progress.levels.FirstOrDefault(l => l.quizCategory == category);
+            if (level != null) return level.starsEarned;
+        }
+
+        return 0;
     }
 }
 
@@ -40,6 +52,8 @@ public class DifficultyProgress
     {
         difficultyName = name;
     }
+
+    // Return the levels based on the difficulty (as a parameter)
 }
 
 [System.Serializable]

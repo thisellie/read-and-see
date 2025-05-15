@@ -17,22 +17,14 @@ public class LevelManager : MonoBehaviour
     // Populate the levels container with the level button prefab
     public void PopulateLevelScreen()
     {
-        foreach (Transform child in levelsParentContainer)
-            Destroy(child.gameObject);
+        foreach (Transform child in levelsParentContainer) Destroy(child.gameObject);
 
         QuizCategory[] levels = QuizDatabase.Instance.GetLevels();
 
         foreach (QuizCategory level in levels)
         {
             GameObject levelButton = Instantiate(levelButtonPrefab, levelsParentContainer);
-            if (levelButton.TryGetComponent<Button>(out var button))
-                button.onClick.AddListener(() => OnLevelSelected(level.categoryName));
+            if (levelButton.TryGetComponent<LevelButton>(out var button)) button.Setup(level.categoryName);
         }
-    }
-
-    public void OnLevelSelected(string categoryName)
-    {
-        AudioManager.Instance.PlayButtonClickSound();
-        GameManager.Instance.StartGame(categoryName);
     }
 }
