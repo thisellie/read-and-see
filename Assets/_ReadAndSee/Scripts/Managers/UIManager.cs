@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -8,6 +10,8 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get; private set; }
 
     [Header("Quiz UI References")]
+    [SerializeField] VideoPlayer backgroundVideo;
+    [SerializeField] AudioSource audioSource;
     [SerializeField] TextMeshProUGUI questionText;
     [SerializeField] ImageOptionButton[] imageOptionButtons;
     [SerializeField] TextMeshProUGUI questionCounter;
@@ -15,7 +19,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI titleText;
 
     [Header("Quiz Panel References")]
-    public RectTransform panel;
+    [SerializeField] RectTransform quizPanel;
+    [SerializeField] GameObject introPanel;
+    [SerializeField] Button playButton;
 
     private Vector2 hiddenPosition;
     private Vector2 centerPosition;
@@ -49,9 +55,9 @@ public class UIManager : MonoBehaviour
     public void InitializePanels()
     {
         centerPosition = Vector2.zero;
-        float screenWidth = ((RectTransform)panel.parent).rect.width;
+        float screenWidth = ((RectTransform)quizPanel.parent).rect.width;
         hiddenPosition = new Vector2(screenWidth, 0);
-        panel.anchoredPosition = hiddenPosition;
+        quizPanel.anchoredPosition = hiddenPosition;
     }
 
     public void UpdateQuizCard()
@@ -90,7 +96,25 @@ public class UIManager : MonoBehaviour
 
     public void ShowQuizPanel()
     {
-        LeanTween.move(panel, centerPosition, 0.5f).setEase(LeanTweenType.easeOutExpo);
+        StartCoroutine(PlayClip(GameManager.Instance.Level.titleClip));
+    }
+
+    private IEnumerator PlayClip(AudioClip clip)
+    {
+        playButton.interactable = false;
+
+        if (clip != null)
+        {
+            AudioManager.Instance.PlaySound(clip);
+            yield return new WaitForSeconds(clip.length);
+        }
+        else
+        {
+            yield return new WaitForSeconds(1f); // fallback wait
+        }
+
+        LeanTween.scale(introPanel, Vector3.zero, 0.3f).setEase(LeanTweenType.easeInBack);
+        LeanTween.move(quizPanel, centerPosition, 0.5f).setEase(LeanTweenType.easeOutExpo);
     }
 
     private void ShowResults()
@@ -109,5 +133,23 @@ public class UIManager : MonoBehaviour
         const int totalStars = 3;
         for (int i = 0; i < starCount && i < totalStars; i++) Instantiate(withStarPrefab, starsContainer);
         for (int i = starCount; i < totalStars; i++) Instantiate(noStarPrefab, starsContainer);
+    }
+
+    public void PauseUI()
+    {
+        if (backgroundVideo != null && backgroundVideo.isPlaying)
+            backgroundVideo.Pause();
+
+        if (audioSource != null && audioSource.isPlaying)
+            audioSource.Pause();
+    }
+
+    public void ResumeUI()
+    {
+        if (backgroundVideo != null && !backgroundVideo.isPlaying)
+            backgroundVideo.Play();
+
+        if (audioSource != null && audioSource.isPlaying)
+            audioSource.Play();
     }
 }

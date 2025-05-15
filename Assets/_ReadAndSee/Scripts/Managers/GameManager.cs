@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class GameManager : MonoBehaviour
     public int CorrectAnswers { get; private set; }
     public int TotalQuestions { get; private set; }
     public string CurrentLevel { get; private set; }
+    public QuizLevel Level { get; private set; }
+    public bool IsPaused { get; set; } = false;
 
     private Question[] currentQuestions;
     private float startTime;
@@ -42,15 +45,15 @@ public class GameManager : MonoBehaviour
         CorrectAnswers = 0;
         startTime = Time.time;
 
-        QuizLevel level = QuizDatabase.Instance.GetLevel(CurrentLevel);
-        if (level != null)
+        Level = QuizDatabase.Instance.GetLevel(CurrentLevel);
+        if (Level != null)
         {
-            currentQuestions = level.questions;
+            currentQuestions = Level.questions;
             TotalQuestions = currentQuestions.Length;
         }
         else
         {
-            Debug.LogError("level not found: " + CurrentLevel);
+            Debug.LogError("Level not found: " + CurrentLevel);
         }
     }
 
@@ -75,40 +78,37 @@ public class GameManager : MonoBehaviour
         if (currentQuestion != null)
         {
             bool isCorrect = (selectedOptionIndex == currentQuestion.correctAnswerIndex);
-
-            if (isCorrect)
-            {
-                CorrectAnswers++;
-                AudioManager.Instance.PlayCorrectSound();
-            }
-            else
-            {
-                AudioManager.Instance.PlayWrongSound();
-            }
-
-            CurrentQuestionIndex++;
-
-            if (CurrentQuestionIndex >= currentQuestions.Length)
-            {
-                EndGame();
-            }
-            else
-            {
-                Invoke("UpdateQuizUI", 1.0f);
-            }
-
+            AudioClip clipToPlay = isCorrect ? currentQuestion.correctClip : currentQuestion.wrongClip;
+            if (isCorrect) CorrectAnswers++;
+            StartCoroutine(PlayClip(clipToPlay));
             return;
         }
 
         Debug.LogWarning("Tried to answer but no current question exists");
     }
 
+    private IEnumerator PlayClip(AudioClip clip)
+    {
+        if (clip != null)
+        {
+            AudioManager.Instance.PlaySound(clip);
+            yield return new WaitForSeconds(clip.length);
+        }
+        else
+        {
+            yield return new WaitForSeconds(1f); // fallback wait
+        }
+
+        CurrentQuestionIndex++;
+
+        // TODO: Play video before EndGame()
+        if (CurrentQuestionIndex >= currentQuestions.Length) EndGame();
+        else UpdateQuizUI();
+    }
+
     private void UpdateQuizUI()
     {
-        if (UIManager.Instance != null)
-        {
-            UIManager.Instance.UpdateQuizCard();
-        }
+        if (UIManager.Instance != null) UIManager.Instance.UpdateQuizCard();
     }
 
     private void EndGame()
@@ -134,9 +134,7 @@ public class GameManager : MonoBehaviour
 
             if (existingLevel != null)
             {
-                if (starsEarned > existingLevel.starsEarned)
-                    existingLevel.starsEarned = starsEarned;
-
+                if (starsEarned > existingLevel.starsEarned) existingLevel.starsEarned = starsEarned;
                 existingLevel.timeTaken = totalTime.ToString();
             }
             else
@@ -151,7 +149,6 @@ public class GameManager : MonoBehaviour
 
         SaveManager.Instance.CurrentPlayerData.lastSavedTime = DateTime.Now.ToString();
         SaveManager.Instance.SavePlayer();
-
         SceneManager.LoadScene("Results");
     }
 }

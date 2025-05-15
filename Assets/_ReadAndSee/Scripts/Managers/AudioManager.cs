@@ -50,11 +50,10 @@ public class AudioManager : MonoBehaviour
         PlaySound(gameOverSound);
     }
 
-    private void PlaySound(AudioClip clip)
+    public AudioSource PlaySound(AudioClip clip)
     {
-        if (clip != null && audioSource != null)
-        {
-            audioSource.PlayOneShot(clip);
-        }
+        audioSource.clip = clip;
+        audioSource.Play();
+        return audioSource;
     }
 }
