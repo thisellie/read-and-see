@@ -7,12 +7,12 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     // Game state
-    public DifficultyLevel CurrentDifficulty { get; set; }
+    public Difficulty CurrentDifficulty { get; set; }
     public int CurrentScore { get; private set; }
     public int CurrentQuestionIndex { get; private set; }
     public int CorrectAnswers { get; private set; }
     public int TotalQuestions { get; private set; }
-    public string CurrentCategory { get; private set; }
+    public string CurrentLevel { get; private set; }
 
     private Question[] currentQuestions;
     private float startTime;
@@ -30,9 +30,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void StartGame(string categoryName)
+    public void StartGame(string levelName)
     {
-        CurrentCategory = categoryName;
+        CurrentLevel = levelName;
         ResetGameState();
         LoadQuizScene();
     }
@@ -44,15 +44,15 @@ public class GameManager : MonoBehaviour
         CorrectAnswers = 0;
         startTime = Time.time;
 
-        QuizCategory category = QuizDatabase.Instance.GetCategory(CurrentCategory);
-        if (category != null)
+        QuizLevel level = QuizDatabase.Instance.GetLevel(CurrentLevel);
+        if (level != null)
         {
-            currentQuestions = category.questions;
+            currentQuestions = level.questions;
             TotalQuestions = currentQuestions.Length;
         }
         else
         {
-            Debug.LogError("Category not found: " + CurrentCategory);
+            Debug.LogError("level not found: " + CurrentLevel);
         }
     }
 
@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
 
         if (progress != null)
         {
-            LevelProgress existingLevel = progress.levels.Find(l => l.quizCategory == CurrentCategory);
+            LevelProgress existingLevel = progress.levels.Find(l => l.quizCategory == CurrentLevel);
 
             if (existingLevel != null)
             {
@@ -139,7 +139,7 @@ public class GameManager : MonoBehaviour
             else
             {
                 progress.levels.Add(new LevelProgress(
-                   CurrentCategory,
+                   CurrentLevel,
                    starsEarned,
                    DateTime.Now
                 ));

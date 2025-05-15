@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class DifficultyButton : MonoBehaviour
 {
-    public DifficultyLevel selectedDifficulty;
+    public Difficulty selectedDifficulty;
     public void ApplyDifficulty()
     {
         GameManager.Instance.CurrentDifficulty = selectedDifficulty;

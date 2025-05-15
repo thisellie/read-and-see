@@ -14,8 +14,8 @@ public class ScoreboardSlot : MonoBehaviour
     {
         playerNameText.text = info.playerName;
         totalStarsText.text = $"Total: {info.totalStars} stars";
-        beginnerStarsText.text = $"Beginner: {info.starsByDifficulty[DifficultyLevel.Beginner.ToString()]} stars";
-        normalStarsText.text = $"Normal: {info.starsByDifficulty[DifficultyLevel.Normal.ToString()]} stars";
-        challengingStarsText.text = $"Challenging: {info.starsByDifficulty[DifficultyLevel.Challenging.ToString()]} stars";
+        beginnerStarsText.text = $"Beginner: {info.starsByDifficulty[Difficulty.Beginner.ToString()]} stars";
+        normalStarsText.text = $"Normal: {info.starsByDifficulty[Difficulty.Normal.ToString()]} stars";
+        challengingStarsText.text = $"Challenging: {info.starsByDifficulty[Difficulty.Challenging.ToString()]} stars";
     }
 }

@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private ImageOptionButton[] imageOptionButtons;
     [SerializeField] private TextMeshProUGUI questionCounter;
     [SerializeField] private Slider progressBar;
-    [SerializeField] private TextMeshProUGUI categoryText;
+    [SerializeField] private TextMeshProUGUI levelText;
     [SerializeField] private TextMeshProUGUI scoreText;
 
     [Header("Results UI References")]
@@ -30,7 +30,7 @@ public class UIManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "QuizGame")
         {
-            categoryText.text = GameManager.Instance.CurrentCategory.ToString();
+            levelText.text = GameManager.Instance.CurrentLevel.ToString();
             UpdateQuizCard();
         }
         else if (SceneManager.GetActiveScene().name == "Results")
@@ -90,6 +90,6 @@ public class UIManager : MonoBehaviour
 
     public void OnPlayAgainButtonClicked()
     {
-        GameManager.Instance.StartGame(GameManager.Instance.CurrentCategory);
+        GameManager.Instance.StartGame(GameManager.Instance.CurrentLevel);
     }
 }

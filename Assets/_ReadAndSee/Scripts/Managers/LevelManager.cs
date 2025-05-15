@@ -19,12 +19,12 @@ public class LevelManager : MonoBehaviour
     {
         foreach (Transform child in levelsParentContainer) Destroy(child.gameObject);
 
-        QuizCategory[] levels = QuizDatabase.Instance.GetLevels();
+        QuizLevel[] levels = QuizDatabase.Instance.GetLevels();
 
-        foreach (QuizCategory level in levels)
+        foreach (QuizLevel level in levels)
         {
             GameObject levelButton = Instantiate(levelButtonPrefab, levelsParentContainer);
-            if (levelButton.TryGetComponent<LevelButton>(out var button)) button.Setup(level.categoryName);
+            if (levelButton.TryGetComponent<LevelButton>(out var button)) button.Setup(level.levelName);
         }
     }
 }

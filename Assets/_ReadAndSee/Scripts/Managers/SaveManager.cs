@@ -49,9 +49,9 @@ public class SaveManager : MonoBehaviour
             lastSavedTime = DateTime.Now.ToString("s"), // ISO 8601
             allProgress = new List<DifficultyProgress>
             {
-                new(DifficultyLevel.Beginner),
-                new(DifficultyLevel.Normal),
-                new(DifficultyLevel.Challenging)
+                new(Difficulty.Beginner),
+                new(Difficulty.Normal),
+                new(Difficulty.Challenging)
             }
         };
 

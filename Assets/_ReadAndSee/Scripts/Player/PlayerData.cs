@@ -12,12 +12,12 @@ public class PlayerData
 
     public PlayerData()
     {
-        allProgress.Add(new DifficultyProgress(DifficultyLevel.Beginner));
-        allProgress.Add(new DifficultyProgress(DifficultyLevel.Normal));
-        allProgress.Add(new DifficultyProgress(DifficultyLevel.Challenging));
+        allProgress.Add(new DifficultyProgress(Difficulty.Beginner));
+        allProgress.Add(new DifficultyProgress(Difficulty.Normal));
+        allProgress.Add(new DifficultyProgress(Difficulty.Challenging));
     }
 
-    public DifficultyProgress GetProgress(DifficultyLevel difficultyName)
+    public DifficultyProgress GetProgress(Difficulty difficultyName)
     {
         return allProgress.Find(p => p.difficultyName.Equals(difficultyName));
     }
@@ -35,7 +35,7 @@ public class PlayerData
 }
 
 [System.Serializable]
-public enum DifficultyLevel
+public enum Difficulty
 {
     Beginner,
     Normal,
@@ -45,10 +45,10 @@ public enum DifficultyLevel
 [System.Serializable]
 public class DifficultyProgress
 {
-    public DifficultyLevel difficultyName;
+    public Difficulty difficultyName;
     public List<LevelProgress> levels = new();
 
-    public DifficultyProgress(DifficultyLevel name)
+    public DifficultyProgress(Difficulty name)
     {
         difficultyName = name;
     }

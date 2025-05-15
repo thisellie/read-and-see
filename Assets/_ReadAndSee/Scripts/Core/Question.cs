@@ -1,10 +1,10 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewQuizCategory", menuName = "Quiz/Quiz Category", order = 1)]
-public class QuizCategory : ScriptableObject 
+[CreateAssetMenu(fileName = "NewQuizLevel", menuName = "Quiz/Quiz Level", order = 1)]
+public class QuizLevel : ScriptableObject 
 {
-    public string categoryName;
-    public DifficultyLevel difficulty; 
+    public string levelName;
+    public Difficulty difficulty; 
     public Question[] questions;
 }
 

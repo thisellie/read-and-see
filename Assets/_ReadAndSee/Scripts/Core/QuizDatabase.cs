@@ -2,12 +2,19 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+// Wrapper class for JSON deserialization
+[System.Serializable]
+public class QuizData
+{
+    public QuizLevel[] levels;
+}
+
 public class QuizDatabase : MonoBehaviour
 {
   public static QuizDatabase Instance { get; private set; }
 
   [SerializeField] private TextAsset quizDataJson;
-  private QuizCategory[] categories;
+  private QuizLevel[] levels;
 
   private void Awake()
   {
@@ -31,14 +38,14 @@ public class QuizDatabase : MonoBehaviour
       // Parse the JSON data
       string jsonData = quizDataJson.text;
       QuizData loadedData = JsonUtility.FromJson<QuizData>(jsonData);
-      categories = loadedData.categories;
+      levels = loadedData.levels;
     }
     else
     {
       Debug.LogError("Quiz data JSON file not assigned!");
     }
 
-        foreach (var category in categories)
+        foreach (var category in levels)
         {
             foreach (var question in category.questions)
             {
@@ -57,38 +64,18 @@ public class QuizDatabase : MonoBehaviour
     }
 
     // Get all levels based on the difficulty from the GameManager.Instance.currentDifficulty
-    public QuizCategory[] GetLevels()
+    public QuizLevel[] GetLevels()
     {
-        QuizCategory[] levels = categories.Where(level => level.difficulty == GameManager.Instance.CurrentDifficulty).ToArray();
-        return levels;
+        return levels.Where(level => level.difficulty == GameManager.Instance.CurrentDifficulty).ToArray();
     }
 
-    public QuizCategory GetCategory(string categoryName)
+    public QuizLevel GetLevel(string levelName)
   {
-    foreach (var category in categories)
+    foreach (var category in levels)
     {
-      if (category.categoryName == categoryName)
+      if (category.levelName == levelName)
         return category;
     }
     return null;
   }
-
-  public QuizCategory GetCategory(int index)
-  {
-    if (index >= 0 && index < categories.Length)
-      return categories[index];
-    return null;
-  }
-
-  public int GetCategoryCount()
-  {
-    return categories.Length;
-  }
-}
-
-// Wrapper class for JSON deserialization
-[System.Serializable]
-public class QuizData
-{
-  public QuizCategory[] categories;
 }
