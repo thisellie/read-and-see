@@ -8,16 +8,16 @@ public class LevelButton : MonoBehaviour
     [SerializeField] GameObject noStarPrefab;
     [SerializeField] Button levelButton;
 
-    private string categoryName;
+    private string levelName;
 
     // Check the SaveManager.Instance.currentPlayerData if the loaded level has stars saved
     // Then load the amount of star using the prefabs
 
-    public void Setup(string categoryName)
+    public void Setup(string levelName)
     {
-        this.categoryName = categoryName;
+        this.levelName = levelName;
 
-        int stars = SaveManager.Instance.CurrentPlayerData.GetStarsForCategory(categoryName);
+        int stars = SaveManager.Instance.CurrentPlayerData.GetStarsForCategory(levelName);
         DisplayStars(stars);
 
         levelButton.onClick.RemoveAllListeners();
@@ -36,6 +36,6 @@ public class LevelButton : MonoBehaviour
     public void OnLevelSelected()
     {
         AudioManager.Instance.PlayButtonClickSound();
-        GameManager.Instance.StartGame(categoryName);
+        GameManager.Instance.StartGame(levelName);
     }
 }

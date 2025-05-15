@@ -14,8 +14,14 @@ public class ScoreboardSlot : MonoBehaviour
     {
         playerNameText.text = info.playerName;
         totalStarsText.text = $"Total: {info.totalStars} stars";
-        beginnerStarsText.text = $"Beginner: {info.starsByDifficulty[Difficulty.Beginner.ToString()]} stars";
-        normalStarsText.text = $"Normal: {info.starsByDifficulty[Difficulty.Normal.ToString()]} stars";
-        challengingStarsText.text = $"Challenging: {info.starsByDifficulty[Difficulty.Challenging.ToString()]} stars";
+
+        int GetStars(Difficulty difficulty)
+        {
+            return info.starsByDifficulty.TryGetValue(difficulty, out int stars) ? stars : 0;
+        }
+
+        beginnerStarsText.text = $"Beginner: {GetStars(Difficulty.Beginner)} stars";
+        normalStarsText.text = $"Normal: {GetStars(Difficulty.Normal)} stars";
+        challengingStarsText.text = $"Challenging: {GetStars(Difficulty.Challenging)} stars";
     }
 }

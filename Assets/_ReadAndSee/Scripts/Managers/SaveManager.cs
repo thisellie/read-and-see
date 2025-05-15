@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Linq;
+using UnityEditor;
+using Newtonsoft.Json;
 
 public class SaveManager : MonoBehaviour
 {
@@ -167,15 +169,16 @@ public class SaveManager : MonoBehaviour
             {
                 string json = File.ReadAllText(saveFileName);
 
-                PlayerData playerData = JsonUtility.FromJson<PlayerData>(json);
+                PlayerData playerData = JsonConvert.DeserializeObject<PlayerData>(json);
 
                 int totalStars = 0;
-                Dictionary<string, int> starsByDifficulty = new();
+                Dictionary<Difficulty, int> starsByDifficulty = new();
 
-                foreach (var difficulty in playerData.allProgress)
+                foreach (DifficultyProgress difficulty in playerData.allProgress)
                 {
+                    Debug.Log($"Difficulty: {difficulty.difficultyName}, Levels: {difficulty.levels.Count}");
                     int stars = difficulty.levels.Sum(level => level.starsEarned);
-                    starsByDifficulty[difficulty.difficultyName.ToString()] = stars;
+                    starsByDifficulty[difficulty.difficultyName] = stars;
                     totalStars += stars;
                 }
 
