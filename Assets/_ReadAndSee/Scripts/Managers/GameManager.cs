@@ -54,6 +54,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void LoadQuizScene()
+    {
+        SceneManager.LoadScene("QuizGame");
+    }
+
     public Question GetCurrentQuestion()
     {
         if (CurrentQuestionIndex < currentQuestions.Length)
@@ -148,15 +153,5 @@ public class GameManager : MonoBehaviour
         SaveManager.Instance.SavePlayer();
 
         SceneManager.LoadScene("Results");
-    }
-
-    private void LoadQuizScene()
-    {
-        SceneManager.LoadScene("QuizGame");
-    }
-
-    public float GetProgress()
-    {
-        return (float)CurrentQuestionIndex / TotalQuestions;
     }
 }

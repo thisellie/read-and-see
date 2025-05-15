@@ -14,6 +14,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI titleText;
 
+    [Header("Quiz Panel References")]
+    public RectTransform panel;
+
+    private Vector2 hiddenPosition;
+    private Vector2 centerPosition;
+
     [Header("Results UI References")]
     [SerializeField] TextMeshProUGUI playerName;
     [SerializeField] TextMeshProUGUI incorrectAtmpTxt;
@@ -29,8 +35,23 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        if (SceneManager.GetActiveScene().name == "QuizGame") UpdateQuizCard();
-        else if (SceneManager.GetActiveScene().name == "Results") ShowResults();
+        if (SceneManager.GetActiveScene().name == "QuizGame")
+        {
+            InitializePanels();
+            UpdateQuizCard();
+        }
+        else if (SceneManager.GetActiveScene().name == "Results")
+        {
+            ShowResults();
+        }
+    }
+
+    public void InitializePanels()
+    {
+        centerPosition = Vector2.zero;
+        float screenWidth = ((RectTransform)panel.parent).rect.width;
+        hiddenPosition = new Vector2(screenWidth, 0);
+        panel.anchoredPosition = hiddenPosition;
     }
 
     public void UpdateQuizCard()
@@ -65,6 +86,11 @@ public class UIManager : MonoBehaviour
             titleText.text = GameManager.Instance.CurrentLevel;
             scoreText.text = $"Score: {GameManager.Instance.CorrectAnswers}";
         }
+    }
+
+    public void ShowQuizPanel()
+    {
+        LeanTween.move(panel, centerPosition, 0.5f).setEase(LeanTweenType.easeOutExpo);
     }
 
     private void ShowResults()
