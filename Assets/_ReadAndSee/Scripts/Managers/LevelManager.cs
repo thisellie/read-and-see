@@ -24,7 +24,7 @@ public class LevelManager : MonoBehaviour
         foreach (QuizLevel level in levels)
         {
             GameObject levelButton = Instantiate(levelButtonPrefab, levelsParentContainer);
-            if (levelButton.TryGetComponent<LevelButton>(out var button)) button.Setup(level.levelName);
+            if (levelButton.TryGetComponent<LevelButton>(out var button)) button.Setup(level.levelName, level.thumbnail);
         }
     }
 }

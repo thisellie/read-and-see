@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -7,18 +8,19 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get; private set; }
 
     [Header("Quiz UI References")]
-    [SerializeField] private TextMeshProUGUI questionText;
-    [SerializeField] private ImageOptionButton[] imageOptionButtons;
-    [SerializeField] private TextMeshProUGUI questionCounter;
-    [SerializeField] private TextMeshProUGUI scoreText;
-    [SerializeField] private TextMeshProUGUI titleText;
+    [SerializeField] TextMeshProUGUI questionText;
+    [SerializeField] ImageOptionButton[] imageOptionButtons;
+    [SerializeField] TextMeshProUGUI questionCounter;
+    [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI titleText;
 
     [Header("Results UI References")]
-    [SerializeField] private TextMeshProUGUI playerName;
-    [SerializeField] private TextMeshProUGUI incorrectAtmpTxt;
+    [SerializeField] TextMeshProUGUI playerName;
+    [SerializeField] TextMeshProUGUI incorrectAtmpTxt;
     [SerializeField] Transform starsContainer;
     [SerializeField] GameObject withStarPrefab;
     [SerializeField] GameObject noStarPrefab;
+    [SerializeField] Image levelThumbnail;
 
     private void Awake()
     {
@@ -27,14 +29,8 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        if (SceneManager.GetActiveScene().name == "QuizGame")
-        {
-            UpdateQuizCard();
-        }
-        else if (SceneManager.GetActiveScene().name == "Results")
-        {
-            ShowResults();
-        }
+        if (SceneManager.GetActiveScene().name == "QuizGame") UpdateQuizCard();
+        else if (SceneManager.GetActiveScene().name == "Results") ShowResults();
     }
 
     public void UpdateQuizCard()
@@ -67,7 +63,7 @@ public class UIManager : MonoBehaviour
 
             // Update score
             titleText.text = GameManager.Instance.CurrentLevel;
-            scoreText.text = $"Score: {GameManager.Instance.CurrentScore}";
+            scoreText.text = $"Score: {GameManager.Instance.CorrectAnswers}";
         }
     }
 
@@ -75,7 +71,8 @@ public class UIManager : MonoBehaviour
     {
         playerName.text = $"Player: {SaveManager.Instance.CurrentPlayerData.playerName}";
         incorrectAtmpTxt.text = $"Incorrect attempts: {GameManager.Instance.TotalQuestions - GameManager.Instance.CorrectAnswers}";
-        int stars = SaveManager.Instance.CurrentPlayerData.GetStarsForCategory(GameManager.Instance.CurrentLevel);
+        levelThumbnail.sprite = QuizDatabase.Instance.GetLevel(GameManager.Instance.CurrentLevel).thumbnail;
+        int stars = SaveManager.Instance.CurrentPlayerData.GetLevelStars(GameManager.Instance.CurrentLevel);
         DisplayStars(stars);
     }
 
@@ -86,15 +83,5 @@ public class UIManager : MonoBehaviour
         const int totalStars = 3;
         for (int i = 0; i < starCount && i < totalStars; i++) Instantiate(withStarPrefab, starsContainer);
         for (int i = starCount; i < totalStars; i++) Instantiate(noStarPrefab, starsContainer);
-    }
-
-    public void OnMainMenuButtonClicked()
-    {
-        SceneManager.LoadScene("MainMenu");
-    }
-
-    public void OnPlayAgainButtonClicked()
-    {
-        GameManager.Instance.StartGame(GameManager.Instance.CurrentLevel);
     }
 }

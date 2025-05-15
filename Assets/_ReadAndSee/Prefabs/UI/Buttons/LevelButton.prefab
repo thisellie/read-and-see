@@ -254,6 +254,7 @@ MonoBehaviour:
   withStarPrefab: {fileID: 4397325432638189224, guid: c272f2284b8b6744fac7ce73097d51b6, type: 3}
   noStarPrefab: {fileID: 4476039639766907333, guid: 804ba3b5c6917c24eaf22c352e5643cd, type: 3}
   levelButton: {fileID: 9048604323428263388}
+  thumbnail: {fileID: 7157034532769324279}
 --- !u!1001 &1499578777407310801
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -2100,6 +2100,7 @@ MonoBehaviour:
   starsContainer: {fileID: 438116927}
   withStarPrefab: {fileID: 4397325432638189224, guid: c272f2284b8b6744fac7ce73097d51b6, type: 3}
   noStarPrefab: {fileID: 4476039639766907333, guid: 804ba3b5c6917c24eaf22c352e5643cd, type: 3}
+  levelThumbnail: {fileID: 928235808}
 --- !u!4 &1653015803
 Transform:
   m_ObjectHideFlags: 0

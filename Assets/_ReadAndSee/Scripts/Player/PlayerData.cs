@@ -18,7 +18,7 @@ public class PlayerData
 
     public List<DifficultyProgress> allProgress = new();
 
-    public int GetStarsForCategory(string category)
+    public int GetLevelStars(string category)
     {
         foreach (var progress in allProgress)
         {

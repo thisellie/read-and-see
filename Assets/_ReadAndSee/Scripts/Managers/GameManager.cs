@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
 
     // Game state
     public Difficulty CurrentDifficulty { get; set; }
-    public int CurrentScore { get; private set; }
     public int CurrentQuestionIndex { get; private set; }
     public int CorrectAnswers { get; private set; }
     public int TotalQuestions { get; private set; }
@@ -39,7 +38,6 @@ public class GameManager : MonoBehaviour
 
     private void ResetGameState()
     {
-        CurrentScore = 0;
         CurrentQuestionIndex = 0;
         CorrectAnswers = 0;
         startTime = Time.time;
