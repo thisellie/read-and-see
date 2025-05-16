@@ -24,7 +24,7 @@ public class ImageOptionButton : MonoBehaviour
     {
         AudioManager.Instance.PlayButtonClickSound();
 
-        foreach (var option in FindObjectsOfType<ImageOptionButton>())
+        foreach (var option in FindObjectsByType<ImageOptionButton>(FindObjectsSortMode.None))
         {
             option.button.interactable = false;
         }
