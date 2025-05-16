@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe3007c4fb8c2a46906292dca482505, type: 3}
+  m_Name: Lost Dog
+  m_EditorClassIdentifier: 
+  levelName: Lost Dog
+  difficulty: 2
+  thumbnail: {fileID: 2322351003123331580, guid: 980be25130671904bbad465d37ca02f7, type: 3}
+  videoClip: {fileID: 32900000, guid: 96d98080286a9504288841acee3deaa4, type: 3}
+  titleClip: {fileID: 8300000, guid: b2202a6e16c486240897c4a15878409d, type: 3}
+  questions:
+  - questionText: Joshua was walking home from school on a sunny March afternoon
+      when he heard a dog barking.
+    correctClip: {fileID: 8300000, guid: 0de625c58c07c1243a9d9fcfd9bbdae4, type: 3}
+    wrongClip: {fileID: 8300000, guid: 7a62d84f720d1b84a98755930d247b1a, type: 3}
+    imageOptions:
+    - {fileID: 2322351003123331580, guid: 980be25130671904bbad465d37ca02f7, type: 3}
+    - {fileID: -7866678605945730405, guid: cbba9a0ec9dab604a8b867443f6f8e6d, type: 3}
+    correctAnswerIndex: 0
+  - questionText: Curious and slightly nervous, he looked around and spotted a dog
+      tied to a post near the woods. The dog had no collar, and no one seemed to
+      be nearby.
+    correctClip: {fileID: 8300000, guid: b8a6c491480a46a46a3271289007c5a1, type: 3}
+    wrongClip: {fileID: 8300000, guid: 6608060a04c85044a9664a3919184f6f, type: 3}
+    imageOptions:
+    - {fileID: -3848560328238774895, guid: 8c162e06156a1d34999cd70c34b50350, type: 3}
+    - {fileID: 2322351003123331580, guid: 980be25130671904bbad465d37ca02f7, type: 3}
+    correctAnswerIndex: 0
+  - questionText: Cautiously, Joshua approached and spoke gently, not wanting to
+      scare it. The dog wagged its tail and licked his hand, making him smile.
+    correctClip: {fileID: 8300000, guid: ee2942f79ad4caa4391aef2b015a59ab, type: 3}
+    wrongClip: {fileID: 8300000, guid: 9c439988bd0a4df4f9616c26b39523ad, type: 3}
+    imageOptions:
+    - {fileID: -2056046850784790795, guid: 8fd14bc54674fb147b1130b125d3b77f, type: 3}
+    - {fileID: -1055069497252187714, guid: 486738579d707a045b0a815e7f6c52f7, type: 3}
+    correctAnswerIndex: 0
+  - questionText: ' He stayed with the dog, asking people who passed if they recognized
+      it.'
+    correctClip: {fileID: 8300000, guid: c7006fcd7855afa4f8bd9eaf57b1ba4d, type: 3}
+    wrongClip: {fileID: 8300000, guid: a5f7df09c1c085d4ea78002525e03d41, type: 3}
+    imageOptions:
+    - {fileID: -1716114899119322924, guid: 06b1fdd468236b447809aaed0674249a, type: 3}
+    - {fileID: 6630599854562131410, guid: 73c0512b43dd51045b5715b6d8143e09, type: 3}
+    correctAnswerIndex: 0
+  - questionText: An elderly woman mentioned seeing the dog wandering earlier that
+      morning.
+    correctClip: {fileID: 8300000, guid: 5f28ae3ce0b7d6e449fe652f4683fa9f, type: 3}
+    wrongClip: {fileID: 8300000, guid: 740f225b7a4efed45b7fe4daa49d563f, type: 3}
+    imageOptions:
+    - {fileID: 6630599854562131410, guid: 73c0512b43dd51045b5715b6d8143e09, type: 3}
+    - {fileID: -2923963723414390904, guid: d0195610379cb5f488e554b6032579de, type: 3}
+    correctAnswerIndex: 0
+  - questionText: Joshua called his parents and asked if he could take the dog home
+      temporarily. They agreed.
+    correctClip: {fileID: 8300000, guid: ea5ab0f58a23191468379a0ee9aa86a1, type: 3}
+    wrongClip: {fileID: 8300000, guid: 9c439988bd0a4df4f9616c26b39523ad, type: 3}
+    imageOptions:
+    - {fileID: -2923963723414390904, guid: d0195610379cb5f488e554b6032579de, type: 3}
+    - {fileID: -1055069497252187714, guid: 486738579d707a045b0a815e7f6c52f7, type: 3}
+    correctAnswerIndex: 0
+  - questionText: He set up a small bed in the garage for it.
+    correctClip: {fileID: 8300000, guid: 77313d2769c144f4297d99a5f8efb714, type: 3}
+    wrongClip: {fileID: 0}
+    imageOptions:
+    - {fileID: 4636536060936267095, guid: 245b577d0ba100740b3381d73be0a51a, type: 3}
+    - {fileID: -8731588136818204762, guid: d51c7ac9b7753584a90810c9a65dc14c, type: 3}
+    correctAnswerIndex: 0
+  - questionText: Over the next few days, Joshua and his parents posted online about
+      the missing dog.
+    correctClip: {fileID: 0}
+    wrongClip: {fileID: 8300000, guid: fa3e7939ec957e04f9b29a2c63da1566, type: 3}
+    imageOptions:
+    - {fileID: 7589479473486029360, guid: d46cddd1d46f1c2489ce7438d6a5424f, type: 3}
+    - {fileID: 4636536060936267095, guid: 245b577d0ba100740b3381d73be0a51a, type: 3}
+    correctAnswerIndex: 0
+  - questionText: Over the next few days, Joshua and his parents posted online about
+      the missing dog.
+    correctClip: {fileID: 0}
+    wrongClip: {fileID: 0}
+    imageOptions:
+    - {fileID: -8731588136818204762, guid: d51c7ac9b7753584a90810c9a65dc14c, type: 3}
+    - {fileID: 7589479473486029360, guid: d46cddd1d46f1c2489ce7438d6a5424f, type: 3}
+    correctAnswerIndex: 0

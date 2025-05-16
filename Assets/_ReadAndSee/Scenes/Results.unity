@@ -156,8 +156,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 540, y: -40}
-  m_SizeDelta: {x: 725, y: 300}
+  m_AnchoredPosition: {x: 603, y: 0}
+  m_SizeDelta: {x: 995.2715, y: 444.4556}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &70507070
 MonoBehaviour:
@@ -233,8 +233,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: 25}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 372.41467, y: 37.5}
+  m_SizeDelta: {x: 372.4147, y: 87.5}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &259558971
 MonoBehaviour:
@@ -283,8 +283,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 75
+  m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -409,7 +409,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 500, y: 50}
+  m_AnchoredPosition: {x: 563, y: 50}
   m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &438116928
@@ -754,7 +754,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 630, y: -185}
+  m_AnchoredPosition: {x: 603, y: -183}
   m_SizeDelta: {x: 0, y: 140.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &834533572
@@ -1115,8 +1115,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -500, y: -40.184}
-  m_SizeDelta: {x: 725, y: 650}
+  m_AnchoredPosition: {x: -449, y: 0.0000095367}
+  m_SizeDelta: {x: 590.7551, y: 529.6427}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &928235808
 MonoBehaviour:
@@ -1361,8 +1361,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 75
+  m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1576,8 +1576,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 48
-  m_fontSizeBase: 48
+  m_fontSize: 75
+  m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1801,8 +1801,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 85}
-  m_SizeDelta: {x: 225, y: 35}
+  m_AnchoredPosition: {x: 0, y: 189}
+  m_SizeDelta: {x: 388.2068, y: 143.0956}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1480897612
 MonoBehaviour:
@@ -1892,8 +1892,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 649223268058989734, guid: 4d5623251222d7b4f93bab6738977800, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1991,8 +1991,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4282598211
-  m_fontColor: {r: 0.2627451, g: 0.2627451, b: 0.2627451, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2009,8 +2009,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2090,11 +2090,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29e962a78b82aa34e8c2fc15ea90c6d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  backgroundVideo: {fileID: 0}
+  quizVideo: {fileID: 0}
+  audioSource: {fileID: 0}
   questionText: {fileID: 0}
   imageOptionButtons: []
   questionCounter: {fileID: 0}
   scoreText: {fileID: 0}
   titleText: {fileID: 0}
+  quizPanel: {fileID: 0}
+  introPanel: {fileID: 0}
+  playButton: {fileID: 0}
   playerName: {fileID: 1332841647}
   incorrectAtmpTxt: {fileID: 1007568322}
   starsContainer: {fileID: 438116927}

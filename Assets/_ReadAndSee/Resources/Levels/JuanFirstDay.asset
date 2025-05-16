@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe3007c4fb8c2a46906292dca482505, type: 3}
+  m_Name: JuanFirstDay
+  m_EditorClassIdentifier: 
+  levelName: Juan's First Day
+  difficulty: 1
+  thumbnail: {fileID: 2322351003123331580, guid: 2c7a1b8f4980ddf47af4392143ee84f7, type: 3}
+  videoClip: {fileID: 32900000, guid: de7b3f435e1ef7b4f800f7699d9d8449, type: 3}
+  titleClip: {fileID: 8300000, guid: e5bb5b1dfc8098b4893538931f2504bc, type: 3}
+  questions:
+  - questionText: Juan was excited because it was his first day at his new school
+    correctClip: {fileID: 8300000, guid: 4ece3e2fa644aa4409624de7cc39b9e5, type: 3}
+    wrongClip: {fileID: 8300000, guid: dc2ccc45bf0a5cc49aae26233926d3d9, type: 3}
+    imageOptions:
+    - {fileID: 2322351003123331580, guid: 2c7a1b8f4980ddf47af4392143ee84f7, type: 3}
+    - {fileID: -7866678605945730405, guid: 01e34bb135fd06249b175b297a25a62b, type: 3}
+    correctAnswerIndex: 0
+  - questionText: His mother prepared his uniform and lunch
+    correctClip: {fileID: 8300000, guid: 5c6710478fb4c194dac1578b0f4072ea, type: 3}
+    wrongClip: {fileID: 8300000, guid: ca9701b68d8cadd4ebee6d8d2d7de020, type: 3}
+    imageOptions:
+    - {fileID: -3848560328238774895, guid: bde00066d4e1a0244bb887c83bf30c06, type: 3}
+    - {fileID: -2056046850784790795, guid: fb940b979a8544c4ea82d67be72b0e57, type: 3}
+    correctAnswerIndex: 0
+  - questionText: Juan ask if he could pack his own bag
+    correctClip: {fileID: 8300000, guid: a25db514f46b506418b36a87157dc679, type: 3}
+    wrongClip: {fileID: 8300000, guid: 74eae28bc52e53742b9dcebed603376d, type: 3}
+    imageOptions:
+    - {fileID: -7866678605945730405, guid: 01e34bb135fd06249b175b297a25a62b, type: 3}
+    - {fileID: -1055069497252187714, guid: 64b70f544813c694aa8cd87a6604da33, type: 3}
+    correctAnswerIndex: 0
+  - questionText: '"Okay, Juan. Do not forget your lunch and books," his mother said'
+    correctClip: {fileID: 8300000, guid: 5d66dd468b4ac254d9451590b3b6a7bd, type: 3}
+    wrongClip: {fileID: 8300000, guid: 619fd87de48a64c49a23a86ba5de3e5d, type: 3}
+    imageOptions:
+    - {fileID: -1055069497252187714, guid: 64b70f544813c694aa8cd87a6604da33, type: 3}
+    - {fileID: -1716114899119322924, guid: fe0702ddf24956e4abe118926a937dc5, type: 3}
+    correctAnswerIndex: 0
+  - questionText: "\u201CYes, Mom, I will make sure,\u201D Juan replied with a big
+      smile"
+    correctClip: {fileID: 8300000, guid: 338bb7902b7df984bb5f2422fe520168, type: 3}
+    wrongClip: {fileID: 8300000, guid: aa94717f7e5b48545b7c5f9095938607, type: 3}
+    imageOptions:
+    - {fileID: -2056046850784790795, guid: fb940b979a8544c4ea82d67be72b0e57, type: 3}
+    - {fileID: -2923963723414390904, guid: 7362e27f37fb99a4fbf0fee7df620bcc, type: 3}
+    correctAnswerIndex: 0
+  - questionText: "At school, the teacher greeted him, \u201CWelcome, Juan!\""
+    correctClip: {fileID: 8300000, guid: 50ede6847eae3544a84b6e090aab9c88, type: 3}
+    wrongClip: {fileID: 8300000, guid: aa94717f7e5b48545b7c5f9095938607, type: 3}
+    imageOptions:
+    - {fileID: -1716114899119322924, guid: fe0702ddf24956e4abe118926a937dc5, type: 3}
+    - {fileID: -2923963723414390904, guid: 7362e27f37fb99a4fbf0fee7df620bcc, type: 3}
+    correctAnswerIndex: 0
+  - questionText: The classroom was bright, welcoming, and the other kids were kind
+      and friendly.
+    correctClip: {fileID: 8300000, guid: c08b27e155b16f34984fb1a4e24cfff8, type: 3}
+    wrongClip: {fileID: 8300000, guid: 245db6f8562fbcc43ba07e6b535cdd7f, type: 3}
+    imageOptions:
+    - {fileID: 6630599854562131410, guid: e1f9fb9d5b311aa418d6192e51881a68, type: 3}
+    - {fileID: 7589479473486029360, guid: 9c6f3639fec992643b3250611bcdaf9c, type: 3}
+    correctAnswerIndex: 0
+  - questionText: At first, Juan felt nervous and shy.
+    correctClip: {fileID: 8300000, guid: 4a06285cc8f06184ba22897d953315aa, type: 3}
+    wrongClip: {fileID: 8300000, guid: 9517ad826d6d4ad489620f3190676e1c, type: 3}
+    imageOptions:
+    - {fileID: -2923963723414390904, guid: 7362e27f37fb99a4fbf0fee7df620bcc, type: 3}
+    - {fileID: 2322351003123331580, guid: 2c7a1b8f4980ddf47af4392143ee84f7, type: 3}
+    correctAnswerIndex: 0
+  - questionText: But soon, he talked and played with his classmates.
+    correctClip: {fileID: 8300000, guid: fbb42236d4a8d8e48a02975a4d30661d, type: 3}
+    wrongClip: {fileID: 8300000, guid: e6a420dfab9613148931130f4029f138, type: 3}
+    imageOptions:
+    - {fileID: 4636536060936267095, guid: b1cc5ecc941115a42912ec135a3fad18, type: 3}
+    - {fileID: -3848560328238774895, guid: bde00066d4e1a0244bb887c83bf30c06, type: 3}
+    correctAnswerIndex: 0
+  - questionText: "He felt happy\u2014and his smile stayed wide all day long."
+    correctClip: {fileID: 8300000, guid: 2bdabb0e0cdd1904c87980641b01f1ae, type: 3}
+    wrongClip: {fileID: 8300000, guid: df20d9d7420a4394d83bf732ead59cba, type: 3}
+    imageOptions:
+    - {fileID: 7589479473486029360, guid: 9c6f3639fec992643b3250611bcdaf9c, type: 3}
+    - {fileID: 6630599854562131410, guid: e1f9fb9d5b311aa418d6192e51881a68, type: 3}
+    correctAnswerIndex: 0
