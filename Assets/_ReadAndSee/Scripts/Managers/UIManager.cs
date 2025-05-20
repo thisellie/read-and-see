@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.Video;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Linq;
 
 public class UIManager : MonoBehaviour
 {
@@ -71,12 +72,15 @@ public class UIManager : MonoBehaviour
             questionText.text = currentQuestion.questionText;
 
             // Update options
+            Sprite[] shuffledOptions = currentQuestion.imageOptions.OrderBy(x => Random.value).ToArray();
+
             for (int i = 0; i < imageOptionButtons.Length; i++)
             {
-                if (i < currentQuestion.imageOptions.Length)
+                if (i < shuffledOptions.Length)
                 {
                     imageOptionButtons[i].gameObject.SetActive(true);
-                    imageOptionButtons[i].Setup(currentQuestion.imageOptions[i], i);
+                    int originalIndex = System.Array.IndexOf(currentQuestion.imageOptions, shuffledOptions[i]);
+                    imageOptionButtons[i].Setup(shuffledOptions[i], originalIndex);
                 }
                 else
                 {
