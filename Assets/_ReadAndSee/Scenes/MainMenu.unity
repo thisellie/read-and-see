@@ -2197,7 +2197,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &451994566
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3954,9 +3954,9 @@ RectTransform:
   - {fileID: 1134889462}
   m_Father: {fileID: 1683982402}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 159.20004, y: -87.5818}
   m_SizeDelta: {x: 318.4001, y: 129.4474}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &890909149
@@ -5073,9 +5073,9 @@ RectTransform:
   - {fileID: 877443859}
   m_Father: {fileID: 1683982402}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 527.6001, y: -87.5818}
   m_SizeDelta: {x: 318.4001, y: 129.4474}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1217646417
@@ -7960,9 +7960,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9341f260e3b504796f655fe3fe60dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  exitPanel: {fileID: 1507956539}
+  exitPanel: {fileID: 451994566}
   exitDialog: {fileID: 1507956539}
-  exitDialogCanvasGroup: {fileID: 451994569}
+  exitPanelCanvasGroup: {fileID: 451994569}
   animationDuration: 0.5
   easeIn: 2
   easeOut: 3
@@ -8079,7 +8079,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -96}
-  m_SizeDelta: {x: 0, y: 175.1636}
+  m_SizeDelta: {x: 686.8002, y: 175.1636}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1683982403
 MonoBehaviour:

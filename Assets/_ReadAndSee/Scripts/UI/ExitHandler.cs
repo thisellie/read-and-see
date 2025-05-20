@@ -7,7 +7,7 @@ public class ExitHandler : MonoBehaviour
     [Header("Panel References")]
     [SerializeField] private RectTransform exitPanel;
     [SerializeField] private RectTransform exitDialog;
-    [SerializeField] private CanvasGroup exitDialogCanvasGroup;
+    [SerializeField] private CanvasGroup exitPanelCanvasGroup;
 
     [Header("Animation Settings")]
     [SerializeField] private float animationDuration = 0.5f;
@@ -53,11 +53,11 @@ public class ExitHandler : MonoBehaviour
         {
             exitDialog.anchoredPosition = hiddenPosition;
 
-            if (exitDialogCanvasGroup != null)
+            if (exitPanelCanvasGroup != null)
             {
-                exitDialogCanvasGroup.alpha = 0;
-                exitDialogCanvasGroup.interactable = false;
-                exitDialogCanvasGroup.blocksRaycasts = false;
+                exitPanelCanvasGroup.alpha = 0;
+                exitPanelCanvasGroup.interactable = false;
+                exitPanelCanvasGroup.blocksRaycasts = false;
             }
         }
 
@@ -97,14 +97,14 @@ public class ExitHandler : MonoBehaviour
             .setEase(easeIn);
 
         // Animate fade in if we have a canvas group
-        if (exitDialogCanvasGroup != null)
+        if (exitPanelCanvasGroup != null)
         {
-            LeanTween.alphaCanvas(exitDialogCanvasGroup, 1f, animationDuration)
+            LeanTween.alphaCanvas(exitPanelCanvasGroup, 1f, animationDuration)
                 .setEase(easeIn)
                 .setOnComplete(() =>
                 {
-                    exitDialogCanvasGroup.interactable = true;
-                    exitDialogCanvasGroup.blocksRaycasts = true;
+                    exitPanelCanvasGroup.interactable = true;
+                    exitPanelCanvasGroup.blocksRaycasts = true;
                     isAnimating = false;
                     isPanelVisible = true;
                 });
@@ -134,12 +134,12 @@ public class ExitHandler : MonoBehaviour
             .setEase(easeOut);
 
         // Animate fade out if we have a canvas group
-        if (exitDialogCanvasGroup != null)
+        if (exitPanelCanvasGroup != null)
         {
-            exitDialogCanvasGroup.interactable = false;
-            exitDialogCanvasGroup.blocksRaycasts = false;
+            exitPanelCanvasGroup.interactable = false;
+            exitPanelCanvasGroup.blocksRaycasts = false;
 
-            LeanTween.alphaCanvas(exitDialogCanvasGroup, 0f, animationDuration)
+            LeanTween.alphaCanvas(exitPanelCanvasGroup, 0f, animationDuration)
                 .setEase(easeOut)
                 .setOnComplete(() =>
                 {
