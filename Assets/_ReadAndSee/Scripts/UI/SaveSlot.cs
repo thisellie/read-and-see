@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class SaveSlot : MonoBehaviour
 {
@@ -9,17 +10,16 @@ public class SaveSlot : MonoBehaviour
     public TextMeshProUGUI lastSavedTimeText;
     public Button loadButton;
 
+    private LoadScreenManager loadScreenManager;
     private SaveSlotInfo currentSlotInfo;
-    private string sceneToLoad;
 
-    public void Setup(SaveSlotInfo info, string gameSceneName)
+    public void Setup(SaveSlotInfo info)
     {
         currentSlotInfo = info;
-        sceneToLoad = gameSceneName;
-
         playerNameText.text = info.playerName;
         lastSavedTimeText.text = info.lastSavedTime;
 
+        loadScreenManager = GameObject.Find("LoadScreenManager").GetComponent<LoadScreenManager>();
         loadButton.onClick.RemoveAllListeners();
         loadButton.onClick.AddListener(OnSlotClicked);
     }
@@ -35,7 +35,10 @@ public class SaveSlot : MonoBehaviour
             bool loadSuccess = SaveManager.Instance.LoadPlayer(currentSlotInfo.fileName);
             if (loadSuccess)
             {
-                SaveManager.Instance.TransitionToScene(sceneToLoad);
+                Transform parent = GameObject.Find("Canvas").transform;
+                loadScreenManager.PopulateDifficultyScreen();
+                loadScreenManager.AnimateOut(parent.Find("LoadGamePanel").gameObject);
+                loadScreenManager.AnimateIn(parent.Find("GameSetupPanel").gameObject);
             }
             else
             {
