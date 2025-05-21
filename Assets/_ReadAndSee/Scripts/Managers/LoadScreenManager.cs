@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using TMPro;
 
 public class LoadScreenManager : MonoBehaviour
 {
@@ -9,7 +9,13 @@ public class LoadScreenManager : MonoBehaviour
     public Transform slotsParentContainer;
     public GameObject scoreboardUIPrefab;
     public Transform scoreboardContainer;
-    public string gameSceneName = "GameScene";
+    public TextMeshProUGUI labelText;
+    public TextMeshProUGUI playerName;
+    public GameObject levelButtonPrefab;
+    public Transform levelsParentContainer;
+
+    [Header("Animation Variables")]
+    public float animationTime = 0.4f;
 
     void Start()
     {
@@ -52,7 +58,7 @@ public class LoadScreenManager : MonoBehaviour
             
             if (slotUIInstance.TryGetComponent<SaveSlot>(out var slotComponent))
             {
-                slotComponent.Setup(slotInfo, gameSceneName);
+                slotComponent.Setup(slotInfo);
             }
             else
             {
@@ -91,9 +97,49 @@ public class LoadScreenManager : MonoBehaviour
         }
     }
 
-    // TODO: Add a button on your load screen to go back to a Main Menu
-    public void GoToMainMenu()
+    public void PopulateDifficultyScreen()
     {
-        SceneManager.LoadScene("MainMenuScene");
+        labelText.text = "Difficulty";
+        playerName.text = $"Player: {SaveManager.Instance.CurrentPlayerData.playerName}";
+    }
+
+    public void PopulateLevelScreen()
+    {
+        labelText.text = GameManager.Instance.CurrentDifficulty.ToString();
+        foreach (Transform child in levelsParentContainer) Destroy(child.gameObject);
+
+        QuizLevel[] levels = QuizDatabase.Instance.GetLevels();
+
+        foreach (QuizLevel level in levels)
+        {
+            GameObject levelButton = Instantiate(levelButtonPrefab, levelsParentContainer);
+            if (levelButton.TryGetComponent<LevelButton>(out var button)) button.Setup(level.levelName, level.thumbnail);
+        }
+    }
+
+    public void AnimateIn(GameObject panel)
+    {
+        panel.SetActive(true);
+
+        CanvasGroup cg = panel.GetComponent<CanvasGroup>();
+        RectTransform rt = panel.GetComponent<RectTransform>();
+
+        cg.alpha = 0;
+        rt.anchoredPosition = new Vector2(0, -200);
+
+        LeanTween.alphaCanvas(cg, 1f, animationTime);
+        LeanTween.move(rt, Vector2.zero, animationTime).setEaseOutBack();
+    }
+
+    public void AnimateOut(GameObject panel)
+    {
+        if (!panel.activeSelf) return;
+
+        CanvasGroup cg = panel.GetComponent<CanvasGroup>();
+        RectTransform rt = panel.GetComponent<RectTransform>();
+
+        LeanTween.alphaCanvas(cg, 0f, animationTime);
+        LeanTween.move(rt, new Vector2(0, -200), animationTime).setEaseInBack()
+            .setOnComplete(() => panel.SetActive(false));
     }
 }
