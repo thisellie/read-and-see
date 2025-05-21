@@ -16,8 +16,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI questionText;
     [SerializeField] ImageOptionButton[] imageOptionButtons;
     [SerializeField] TextMeshProUGUI questionCounter;
-    [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI incorrectAtmps;
     [SerializeField] TextMeshProUGUI titleText;
+    [SerializeField] Image mascotImage;
+    [SerializeField] Sprite[] mascotSprites;
 
     [Header("Quiz Panel References")]
     [SerializeField] RectTransform quizPanel;
@@ -90,9 +92,20 @@ public class UIManager : MonoBehaviour
             questionCounter.text = $"Question {currentIndex}/{total}";
 
             // Update score
+            incorrectAtmps.text = $"Incorrect Attempts: {GameManager.Instance.IncorrectAttempts}";
             titleText.text = GameManager.Instance.CurrentLevel;
-            scoreText.text = $"Score: {GameManager.Instance.CorrectAnswers}";
         }
+    }
+
+    public void UpdateMascotSprite(bool isCorrect)
+    {
+        if (isCorrect) mascotImage.sprite = mascotSprites[Random.Range(0, mascotSprites.Length)];
+        else mascotImage.sprite = mascotSprites[Random.Range(0, mascotSprites.Length)];
+
+        // Malupet na animation
+        mascotImage.rectTransform.localScale = Vector3.one;
+        LeanTween.scale(mascotImage.rectTransform, Vector3.one * 1.2f, 0.3f).setEasePunch();
+
     }
 
     public IEnumerator PlayVideo(VideoClip video)
@@ -140,7 +153,7 @@ public class UIManager : MonoBehaviour
     private void ShowResults()
     {
         playerName.text = $"Player: {SaveManager.Instance.CurrentPlayerData.playerName}";
-        incorrectAtmpTxt.text = $"Incorrect attempts: {GameManager.Instance.TotalQuestions - GameManager.Instance.CorrectAnswers}";
+        incorrectAtmpTxt.text = $"Incorrect attempts: {GameManager.Instance.TotalQuestions - GameManager.Instance.IncorrectAttempts}";
         levelThumbnail.sprite = QuizDatabase.Instance.GetLevel(GameManager.Instance.CurrentLevel).thumbnail;
         int stars = SaveManager.Instance.CurrentPlayerData.GetLevelStars(GameManager.Instance.CurrentLevel);
         DisplayStars(stars);

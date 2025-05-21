@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using System;
 using System.Collections;
 using UnityEngine.Video;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class GameManager : MonoBehaviour
     // Game state
     public Difficulty CurrentDifficulty { get; set; }
     public int CurrentQuestionIndex { get; private set; }
-    public int CorrectAnswers { get; private set; }
+    public int IncorrectAttempts { get; private set; }
     public int TotalQuestions { get; private set; }
     public string CurrentLevel { get; private set; }
     public QuizLevel Level { get; private set; }
@@ -33,6 +34,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+#if UNITY_EDITOR
+        QuizLevel testLevel = Resources.Load<QuizLevel>("Levels/JohnKite");
+        CurrentLevel = testLevel.levelName;
+        ResetGameState();
+#endif
+    }
+
     public void StartGame(string levelName)
     {
         CurrentLevel = levelName;
@@ -43,7 +53,7 @@ public class GameManager : MonoBehaviour
     private void ResetGameState()
     {
         CurrentQuestionIndex = 0;
-        CorrectAnswers = 0;
+        IncorrectAttempts = 0;
         startTime = Time.time;
 
         Level = QuizDatabase.Instance.GetLevel(CurrentLevel);
@@ -72,39 +82,57 @@ public class GameManager : MonoBehaviour
         return null;
     }
 
-    public void AnswerQuestion(int selectedOptionIndex)
+    public void AnswerQuestion(int selectedOptionIndex, Button selectedButton)
     {
         Question currentQuestion = GetCurrentQuestion();
-
-        if (currentQuestion != null)
+        if (currentQuestion == null)
         {
-            bool isCorrect = (selectedOptionIndex == currentQuestion.correctAnswerIndex);
-            AudioClip clipToPlay = isCorrect ? currentQuestion.correctClip : currentQuestion.wrongClip;
-            if (isCorrect) CorrectAnswers++;
-            StartCoroutine(PlayClip(clipToPlay));
+            Debug.LogWarning("Tried to answer but no current question exists");
             return;
         }
 
-        Debug.LogWarning("Tried to answer but no current question exists");
-    }
+        bool isCorrect = (selectedOptionIndex == currentQuestion.correctAnswerIndex);
+        AudioClip clipToPlay = isCorrect ? currentQuestion.correctClip : currentQuestion.wrongClip;
+        UIManager.Instance.UpdateMascotSprite(isCorrect);
 
-    private IEnumerator PlayClip(AudioClip clip)
-    {
-        if (clip != null)
+        if (isCorrect)
         {
-            AudioManager.Instance.PlaySound(clip);
-            yield return new WaitForSeconds(clip.length);
+            StartCoroutine(PlayClipThenNext(clipToPlay));
         }
         else
         {
-            yield return new WaitForSeconds(1f); // fallback wait
+            IncorrectAttempts++;
+            StartCoroutine(PlayWrongClipAndForceCorrect(currentQuestion.correctAnswerIndex, selectedButton, clipToPlay));
         }
+
+        // TODO: Update mascot or feedback UI
+    }
+
+    private IEnumerator PlayClipThenNext(AudioClip clip)
+    {
+        if (clip != null) AudioManager.Instance.PlaySound(clip);
+        yield return new WaitForSeconds(clip != null ? clip.length : 1f);
 
         CurrentQuestionIndex++;
 
-        // TODO: Play video before EndGame()
-        if (CurrentQuestionIndex >= currentQuestions.Length) StartCoroutine(UIManager.Instance.PlayVideo(Level.videoClip));
-        else UpdateQuizUI();
+        if (CurrentQuestionIndex >= currentQuestions.Length)
+            StartCoroutine(UIManager.Instance.PlayVideo(Level.videoClip));
+        else
+            UpdateQuizUI();
+    }
+
+    private IEnumerator PlayWrongClipAndForceCorrect(int correctIndex, Button wrongButton, AudioClip wrongClip)
+    {
+        if (wrongClip != null) AudioManager.Instance.PlaySound(wrongClip);
+        yield return new WaitForSeconds(wrongClip != null ? wrongClip.length : 1f);
+
+        foreach (var option in FindObjectsByType<ImageOptionButton>(FindObjectsSortMode.None))
+        {
+            bool isCorrect = (option.optionIndex == correctIndex);
+            option.button.interactable = isCorrect;
+        }
+
+        wrongButton.interactable = false;
     }
 
     private void UpdateQuizUI()
@@ -118,13 +146,13 @@ public class GameManager : MonoBehaviour
         float totalTime = Time.time - startTime;
         int starsEarned = 1; // 1 star for completion
 
-        if (CorrectAnswers == TotalQuestions)
+        if (IncorrectAttempts == 0)
             starsEarned++; // Perfect score
 
         if (totalTime < 180f)
             starsEarned++; // Under 3 minutes
 
-        Debug.Log($"Quiz Finished in {totalTime:F2} seconds. Stars Earned: {starsEarned}");
+        Debug.Log($"Quiz Finished in {totalTime:F2} seconds. Stars Earned: {starsEarned}. Incorrect Attempts: {IncorrectAttempts}");
 
         // Store the result in PlayerData
         DifficultyProgress progress = SaveManager.Instance.CurrentPlayerData.allProgress

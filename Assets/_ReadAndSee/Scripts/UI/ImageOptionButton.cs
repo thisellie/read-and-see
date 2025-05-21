@@ -4,8 +4,8 @@ using UnityEngine.UI;
 public class ImageOptionButton : MonoBehaviour
 {
     [SerializeField] private Image optionImage;
-    private Button button;
-    private int optionIndex;
+    public Button button;
+    public int optionIndex;
 
     private void Awake()
     {
@@ -29,6 +29,6 @@ public class ImageOptionButton : MonoBehaviour
             option.button.interactable = false;
         }
 
-        GameManager.Instance.AnswerQuestion(optionIndex);
+        GameManager.Instance.AnswerQuestion(optionIndex, button);
     }
 }

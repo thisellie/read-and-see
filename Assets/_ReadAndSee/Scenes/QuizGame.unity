@@ -1363,7 +1363,7 @@ GameObject:
   - component: {fileID: 465508542}
   - component: {fileID: 465508544}
   m_Layer: 5
-  m_Name: ScoreText
+  m_Name: IncorrectAttempts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1385,7 +1385,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -200, y: -100}
+  m_AnchoredPosition: {x: -325, y: -100}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &465508542
@@ -1408,7 +1408,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 'Incorrect Attempts: 99'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 056dc1325a303294097ca4d0581f8882, type: 2}
   m_sharedMaterial: {fileID: -1051928495666872944, guid: 056dc1325a303294097ca4d0581f8882, type: 2}
@@ -1945,8 +1945,18 @@ MonoBehaviour:
   - {fileID: 1814148749}
   - {fileID: 1999367262}
   questionCounter: {fileID: 385919681}
-  scoreText: {fileID: 465508542}
+  incorrectAtmps: {fileID: 465508542}
   titleText: {fileID: 1433326803}
+  mascotImage: {fileID: 1847849438}
+  mascotSprites:
+  - {fileID: -5082832879799391828, guid: 89cd168a4ce3042438d23718f9a3ccfa, type: 3}
+  - {fileID: -5272751552501246843, guid: f691dfe5e86d7644ea805b2de97c44ac, type: 3}
+  - {fileID: 1226428420554390521, guid: 3f8497233878b064b977d228c77c6ee1, type: 3}
+  - {fileID: -1223465687858274405, guid: 4f3d432f230fbb3478ecb07e034db3dc, type: 3}
+  - {fileID: -2367935954380273697, guid: 708b9cfea6d736b4da185bf7caa0ce63, type: 3}
+  - {fileID: 7450024721513535554, guid: d0739e11fd3c19647bf4f9d8983a857c, type: 3}
+  - {fileID: 2440111543064772908, guid: 455946d5c8b3bb04aa8d9fa0d1544d85, type: 3}
+  - {fileID: -8812894382284239371, guid: 950b8f8a4aba61844909ee3f4a6aad1c, type: 3}
   quizPanel: {fileID: 2124882676}
   introPanel: {fileID: 619237358}
   playButton: {fileID: 1886188892}
